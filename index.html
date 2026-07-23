@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imersão Evento de Venda — 04 e 05 de Setembro</title>
+<meta name="description" content="Em 2 dias você monta o processo por baixo de uma data de faturamento: o método pra vender todo mês usando os contatos que já estão no seu WhatsApp.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<style>
+  :root{
+    --bg-dark-1: #0b2016;
+    --bg-dark-2: #143a24;
+    --white: #ffffff;
+    --offwhite: #f6f7f2;
+    --lightgray: #eef1ea;
+    --ink: #15221a;
+    --muted: #4d5f53;
+    --border-light: #e1e6da;
+    --orange: #f2691c;
+    --orange-deep: #d9500b;
+    --red-x: #e5493f;
+    --shadow-card: 0 20px 45px -20px rgba(11,32,22,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background:var(--white);
+  }
+  h1,h2,h3,h4{
+    font-family:'Poppins','Segoe UI',system-ui,sans-serif;
+    font-weight:700;
+    line-height:1.2;
+    text-wrap:balance;
+    margin:0;
+    color:var(--heading);
+  }
+  p{margin:0;color:var(--text);}
+  ul{margin:0;padding:0;list-style:none;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;}
+  em{font-style:italic;}
+  strong{font-weight:700;color:var(--text-strong);}
+
+  /* ===== section color tokens — everything inside inherits automatically ===== */
+  .bg-white{
+    --heading:var(--ink); --text:#33463a; --text-strong:var(--ink);
+    --text-muted:var(--muted); --accent:#1f8f57; --card-bg:var(--white);
+    --card-border:var(--border-light); --card-shadow:var(--shadow-card);
+    background:var(--white); color:var(--text);
+  }
+  .bg-lightgray{
+    --heading:var(--ink); --text:#33463a; --text-strong:var(--ink);
+    --text-muted:var(--muted); --accent:#1f8f57; --card-bg:var(--white);
+    --card-border:var(--border-light); --card-shadow:var(--shadow-card);
+    background:var(--lightgray); color:var(--text);
+  }
+  .bg-dark{
+    --heading:#f6faf7; --text:#eef4f0; --text-strong:#ffffff;
+    --text-muted:#e8f0ea; --accent:#5fe6a0; --card-bg:rgba(255,255,255,0.05);
+    --card-border:rgba(255,255,255,0.14); --card-shadow:none;
+    background:var(--bg-dark-2);
+    color:var(--text);
+  }
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
+  .copy{max-width:700px;margin:0 auto;}
+  .section{position:relative;}
+  .section-pad{padding:60px 0;}
+  .section-pad-sm{padding:44px 0;}
+  @media (min-width:640px){
+    .section-pad{padding:96px 0;}
+    .section-pad-sm{padding:64px 0;}
+  }
+
+  /* wave dividers */
+  .wave{display:block;width:100%;height:40px;line-height:0;}
+  .wave svg{width:100%;height:100%;display:block;}
+  @media (min-width:640px){.wave{height:60px;}}
+  .wave-from-white{background:var(--white);}
+  .wave-from-lightgray{background:var(--lightgray);}
+  .wave-from-dark{background:var(--bg-dark-2);}
+  .wave-from-orange{background:var(--orange);}
+
+  .center{text-align:center;}
+
+  .kicker{
+    font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;
+  }
+  h2.h-title{font-size:clamp(23px,4.6vw,30px);margin:0 0 20px;}
+  h2.h-title.center{text-align:center;}
+  .h-subtitle{font-size:14.5px;font-style:italic;color:var(--text-muted);margin:-8px 0 22px;}
+  .h-subtitle.center{text-align:center;}
+
+  p.body{font-size:16.5px;line-height:1.75;margin:18px 0;}
+  p.body.center{text-align:center;}
+  .lead-bold{font-weight:700;font-size:19px;line-height:1.5;margin:24px 0;color:var(--heading);}
+  .lead-bold.center{text-align:center;}
+  .accent-line{color:var(--accent);font-weight:700;font-size:19px;line-height:1.5;margin:24px 0;}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    padding:17px 26px;border-radius:12px;font-weight:700;font-size:15.5px;
+    border:none;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  @media (min-width:520px){.btn{width:auto;padding:17px 36px;}}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-orange{
+    background:linear-gradient(180deg,var(--orange) 0%, var(--orange-deep) 100%);
+    color:#fff8f2;box-shadow:0 14px 30px -12px rgba(242,105,28,0.55);
+  }
+  .btn-orange:hover{box-shadow:0 18px 34px -12px rgba(242,105,28,0.7);}
+  .btn-outline{background:transparent;border:1.5px solid var(--accent);color:var(--accent);}
+  .btn-row{display:flex;margin:28px 0 4px;}
+  .btn-row.center{justify-content:center;}
+
+  /* badge pill */
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+    font-size:12px;font-weight:700;letter-spacing:.02em;
+    border:1px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.06);
+    color:#e3f0e6;
+  }
+
+  /* ===== hero ===== */
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:52px;}}
+  .hero-eyebrow{font-size:13.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
+  .hero-date{font-size:14px;color:var(--text-muted);margin-top:3px;margin-bottom:22px;}
+  .hero-title{font-size:clamp(28px,6vw,42px);margin-bottom:20px;}
+  .hero-bold{font-weight:700;font-size:18px;line-height:1.55;margin:0 0 18px;}
+  .hero-sub{font-size:16.5px;line-height:1.75;margin:0 0 28px;}
+  .trust-row{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:22px;}
+  .trust-item{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--text-muted);}
+  .lote-pill{
+    display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 16px;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:12px;
+    font-size:12.5px;color:var(--text-muted);
+  }
+  .lote-pill b{background:var(--accent);color:#062012;font-weight:800;padding:3px 10px;border-radius:7px;font-size:11.5px;flex-shrink:0;}
+
+  .chat-card{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);
+    border-radius:18px;padding:20px;box-shadow:0 30px 60px -25px rgba(0,0,0,0.5);
+  }
+
+  /* authority photo gallery (hero) */
+  .authority-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .authority-col{display:flex;flex-direction:column;gap:14px;}
+  .authority-col.offset{margin-top:34px;}
+  .authority-gallery figure{
+    margin:0;border-radius:16px;overflow:hidden;
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 22px 45px -20px rgba(0,0,0,0.55);
+  }
+  .authority-gallery img{
+    width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;
+    display:block;transition:transform .4s ease;
+  }
+  .authority-gallery figure:hover img{transform:scale(1.05);}
+  @media (min-width:900px) and (max-width:1099px){
+    .authority-col.offset{margin-top:24px;}
+  }
+  .chat-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .chat-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .chat-name{font-size:13px;font-weight:700;color:var(--text-strong);}
+  .chat-status{font-size:11px;color:var(--accent);}
+  .bubble{max-width:80%;padding:10px 14px;border-radius:12px;font-size:12.5px;line-height:1.45;margin-bottom:10px;}
+  .bubble.in{background:rgba(255,255,255,0.07);color:var(--text);border-top-left-radius:3px;}
+  .bubble.out{background:var(--accent);color:#062012;margin-left:auto;border-top-right-radius:3px;font-weight:600;}
+  .chat-chip{
+    display:inline-block;margin-top:2px;background:rgba(95,230,160,0.12);border:1px solid rgba(95,230,160,0.35);
+    color:var(--accent);font-size:11px;font-weight:700;padding:8px 12px;border-radius:10px;
+  }
+
+  /* dot list */
+  ul.dot-list{margin:20px 0;display:flex;flex-direction:column;gap:13px;}
+  ul.dot-list li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.65;}
+  ul.dot-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:9px;flex-shrink:0;}
+
+  /* x list */
+  ul.x-list{margin:20px 0;display:flex;flex-direction:column;gap:15px;}
+  ul.x-list li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.65;}
+  ul.x-list li .x{color:var(--red-x);font-weight:800;flex-shrink:0;font-size:16.5px;}
+
+  /* check list (positive) */
+  ul.check-list{margin:20px 0;display:flex;flex-direction:column;gap:13px;}
+  ul.check-list li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.6;}
+  ul.check-list li .ok{color:var(--accent);font-weight:800;flex-shrink:0;}
+
+  /* icon list — badge circle + bold title on its own line, description below */
+  ul.icon-list{margin:26px 0;display:flex;flex-direction:column;gap:20px;}
+  ul.icon-list li{display:flex;gap:14px;align-items:flex-start;}
+  .icon-badge{
+    width:26px;height:26px;border-radius:50%;flex-shrink:0;margin-top:1px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:800;color:#fff;
+  }
+  .icon-badge.ok{background:#1f8f57;}
+  .bg-dark .icon-badge.ok{background:#2fa968;}
+  .icon-badge.no{background:var(--red-x);}
+  .icon-item-title{display:block;font-size:16.5px;line-height:1.4;font-weight:700;color:var(--heading);margin-bottom:4px;}
+  .icon-item-desc{margin:0;font-size:16.5px;line-height:1.65;color:var(--text-muted);}
+
+  /* numbered phases */
+  .phase-list{display:flex;flex-direction:column;gap:18px;margin:26px 0;}
+  .phase-item{display:grid;grid-template-columns:36px 1fr;gap:16px;align-items:start;}
+  .phase-num{
+    width:34px;height:34px;border-radius:10px;background:rgba(31,143,87,0.1);
+    border:1px solid rgba(31,143,87,0.3);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13.5px;
+    font-family:'Poppins',sans-serif;
+  }
+  .bg-dark .phase-num{background:rgba(95,230,160,0.14);border-color:rgba(95,230,160,0.35);}
+  .phase-item p{font-size:16.5px;line-height:1.7;}
+
+  /* card container (generic) */
+  .card{
+    background:var(--card-bg);border:1px solid var(--card-border);
+    border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:var(--card-shadow);
+  }
+  @media (min-width:640px){.card{padding:30px 32px;}}
+  .card h3.quote-title{font-size:18px;font-style:italic;color:var(--accent);margin-bottom:0;line-height:1.4;}
+
+  .grid-2{display:grid;grid-template-columns:1fr;gap:22px;}
+
+  /* path badge — labels a semi-block, e.g. "FORMA 01", so the lead self-identifies */
+  .path-head{text-align:center;margin-bottom:18px;}
+  .path-badge{
+    display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;
+    font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(95,230,160,0.14);border:1px solid rgba(95,230,160,0.35);
+    color:var(--accent);margin-bottom:12px;
+  }
+
+  /* day cards */
+  .day-card{border-radius:16px;overflow:hidden;background:var(--white);border:1px solid var(--border-light);box-shadow:var(--shadow-card);}
+  .day-head{background:var(--bg-dark-2);color:#f6faf7;padding:20px 22px;}
+  .day-head .txt{font-weight:700;font-size:15.5px;line-height:1.4;}
+  .day-body{padding:22px;background:var(--white);}
+  .day-body p.body{color:#33463a;}
+  .day-body ul.dot-list li{color:#33463a;}
+  .day-body ul.dot-list li::before{background:#1f8f57;}
+
+  .day-columns{display:grid;grid-template-columns:1fr;gap:36px;margin-top:32px;}
+  @media (min-width:760px){.day-columns{grid-template-columns:1fr 1fr;gap:28px;align-items:start;}}
+  .day-column{display:flex;flex-direction:column;gap:20px;}
+  .day-column-head{
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;
+    text-transform:uppercase;color:var(--accent);text-align:center;
+  }
+
+  /* schedule banner */
+  .schedule-banner{
+    background:var(--orange);
+    padding:52px 0;
+  }
+  .schedule-title-main{
+    font-family:'Poppins',sans-serif;font-weight:800;color:#fff8f2;text-align:center;
+    text-transform:uppercase;letter-spacing:.03em;font-size:clamp(20px,4vw,26px);
+    margin-bottom:40px;
+  }
+  .schedule-grid{display:flex;flex-direction:column;gap:32px;align-items:center;}
+  @media (min-width:760px){.schedule-grid{flex-direction:row;justify-content:center;gap:0;}}
+  .schedule-item{text-align:center;padding:0 34px;}
+  .schedule-divider{display:none;}
+  @media (min-width:760px){.schedule-divider{display:block;width:1px;height:64px;background:rgba(255,255,255,0.35);}}
+  .schedule-icon{
+    width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.16);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+  }
+  .schedule-icon svg{width:22px;height:22px;}
+  .schedule-item-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:17.5px;color:#fff;margin-bottom:5px;}
+  .schedule-item-sub{font-size:14px;color:rgba(255,255,255,0.88);}
+
+  /* bio */
+  .bio-grid{display:flex;flex-direction:column;gap:32px;}
+
+  /* journey gallery — the visual version of "de onde eu vim" */
+  .journey-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media (min-width:640px){.journey-gallery{grid-template-columns:repeat(3,1fr);gap:16px;}}
+  .journey-gallery figure{
+    margin:0;border-radius:14px;overflow:hidden;
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 18px 36px -18px rgba(0,0,0,0.55);
+  }
+  .journey-gallery img{
+    width:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .4s ease;
+  }
+  .journey-gallery figure:hover img{transform:scale(1.05);}
+
+  /* case proof grid — real events, real numbers */
+  .case-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:28px;max-width:700px;margin-left:auto;margin-right:auto;}
+  @media (min-width:760px){.case-grid{grid-template-columns:repeat(3,1fr);max-width:none;}}
+  .case-card{text-align:center;}
+  .case-photo{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin-bottom:18px;box-shadow:var(--card-shadow);}
+  .case-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--heading);margin:12px 0 16px;}
+  .case-metric{font-family:'Poppins',sans-serif;font-weight:800;font-size:29px;color:var(--accent);}
+  .case-metric span{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:12.5px;color:var(--text-muted);margin-top:2px;}
+
+  /* price card v2 — glass card with accent glow */
+  .price-card-v2{
+    max-width:460px;margin:36px auto 0;text-align:center;
+    background:linear-gradient(165deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    border:1px solid rgba(95,230,160,0.35);border-radius:24px;padding:34px 28px 30px;
+    box-shadow:0 30px 70px -25px rgba(0,0,0,0.6), 0 0 70px -22px rgba(95,230,160,0.35);
+  }
+  .price-badge{
+    display:inline-flex;align-items:center;padding:7px 16px;border-radius:999px;
+    font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(95,230,160,0.14);border:1px solid rgba(95,230,160,0.4);
+    color:var(--accent);margin-bottom:20px;
+  }
+  .price-v2-head{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--text-strong);margin-bottom:24px;line-height:1.4;}
+  .price-v2-old{font-size:16px;color:#7d9186;text-decoration:line-through;margin-bottom:6px;}
+  .price-v2-new{font-family:'Poppins',sans-serif;font-weight:800;font-size:42px;color:var(--accent);margin-bottom:10px;}
+  .price-v2-new span{font-size:15px;font-weight:600;color:var(--text-muted);}
+  .price-v2-fire{font-size:13.5px;color:var(--text-muted);margin-bottom:26px;line-height:1.5;}
+  .price-v2-includes{
+    text-align:left;margin:0 0 28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.14);
+  }
+  .price-v2-note{font-size:12px;color:#7d9186;margin-top:16px;}
+
+  /* faq */
+  .faq-list{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+  .faq-item{
+    background:linear-gradient(165deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.16);border-radius:16px;overflow:hidden;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(0,0,0,0.4), 0 16px 30px -18px rgba(0,0,0,0.6);
+  }
+  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:22px 24px;background:transparent;color:var(--heading);font-size:17px;font-weight:700;text-align:left;line-height:1.4;}
+  .faq-q .chev{transition:transform .2s ease;color:var(--accent);flex-shrink:0;font-size:14px;}
+  .faq-item[data-open="true"] .chev{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;padding:0 24px;font-size:16px;line-height:1.7;color:#eef4f0;}
+  .faq-item[data-open="true"] .faq-a{padding-top:16px;padding-bottom:22px;}
+
+  .footer{padding-top:8px;text-align:center;}
+  .footer p{margin-bottom:20px;font-size:16px;color:var(--text-muted);line-height:1.6;}
+
+  /* site footer */
+  .site-footer{padding:44px 0 36px;text-align:center;}
+  .site-footer img{width:130px;margin:0 auto 16px;display:block;}
+  .site-footer p{font-size:13px;color:var(--text-muted);letter-spacing:.02em;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="section bg-dark section-pad">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="badge reveal">IMERSÃO ONLINE E AO VIVO | 04 E 05 DE SETEMBRO</span>
+        <div class="hero-eyebrow reveal" style="margin-top:22px;">Imersão Evento de Venda</div>
+        <div class="hero-date reveal">04 e 05 de Setembro</div>
+
+        <h1 class="hero-title reveal">Você pode faturar em 1 único dia o que hoje leva 30!</h1>
+
+        <p class="hero-bold reveal"><strong>Mas não é marcando uma data no calendário. É colocando um processo por baixo dela</strong>, e é exatamente isso que você monta em 2 dias na Imersão Evento de Vendas.</p>
+
+        <p class="hero-sub reveal">O método para colocar uma data de faturamento no seu calendário todo mês <em>(ou para fazer suas primeiras vendas, se você está começando agora)</em> usando os contatos que já estão no seu WhatsApp, sem depender de post viral e sem gastar mais em tráfego.</p>
+
+        <div class="btn-row reveal"><a href="#preco" class="btn btn-orange">QUERO MINHA VAGA</a></div>
+
+        <div class="trust-row reveal">
+          <span class="trust-item">🔒 Pagamento seguro</span>
+          <span class="trust-item">✓ Acesso à comunidade imediato</span>
+        </div>
+      </div>
+
+      <div class="authority-gallery reveal">
+        <div class="authority-col">
+          <figure><img src="img/authority-1.jpg" alt="Edvan Jacques falando ao microfone em evento ao vivo"></figure>
+          <figure><img src="img/authority-3.jpg" alt="Edvan Jacques ensinando no flipchart"></figure>
+        </div>
+        <div class="authority-col offset">
+          <figure><img src="img/authority-2.jpg" alt="Edvan Jacques gesticulando durante palestra"></figure>
+          <figure><img src="img/authority-4.jpg" alt="Edvan Jacques operando o Funil de WhatsApp em dois notebooks"></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<!-- ============ PROBLEMA DE CALENDÁRIO ============ -->
+<section class="section bg-white section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Me responde com sinceridade:</h2>
+    <p class="lead-bold reveal">Quanto você vai faturar no mês que vem?</p>
+    <p class="h-subtitle center reveal">Pergunto do faturamento novo, não da recorrência que você já tem.</p>
+
+    <p class="body reveal">Se você precisou pensar... se a resposta foi "depende"... eu preciso te falar uma coisa que ninguém te falou ainda:</p>
+    <p class="lead-bold reveal">Você não tem um problema de vendas. Você tem um problema de calendário.</p>
+    <p class="body reveal">E se você ainda está começando, <em>se ainda nem tem esse faturamento pra chamar de seu</em>, preste atenção dobrada, porque o que eu vou te mostrar é o caminho mais curto entre a sua expertise e os seus primeiros clientes.</p>
+
+    <p class="body reveal"><strong>Pensa comigo:</strong></p>
+    <ul class="dot-list reveal">
+      <li>Sua conta de luz tem data pra chegar.</li>
+      <li>O salário tem data pra sair.</li>
+      <li>O aluguel tem data.</li>
+      <li>O imposto tem data.</li>
+    </ul>
+
+    <p class="body reveal">E o seu faturamento? Que dia ele acontece?</p>
+    <p class="body reveal"><em>"Ah, Edvan, vai acontecendo ao longo do mês..."</em></p>
+    <p class="body reveal">Não vai não. O que acontece "ao longo do mês" é o seguinte:</p>
+    <p class="body reveal"><em>Alguém chama no WhatsApp. Você responde quando dá. A pessoa diz "vou pensar". E some. Aí você posta alguma coisa, torce por indicação, e no dia 30 abre a conta para descobrir se o mês foi bom.</em></p>
+
+    <p class="lead-bold reveal">Isso não é vender. Isso é torcer.</p>
+    <p class="body reveal">E enquanto você torce, tem gente com produto pior que o seu, serviço pior que o seu, menos experiência que você <strong>faturando 3x mais</strong>.</p>
+    <p class="body reveal">Não porque são melhores. Porque eles têm uma coisa que você não tem:</p>
+    <p class="accent-line reveal">Uma data. Um Evento de Vendas. E um processo rodando por baixo dele.</p>
+
+    <div class="card reveal" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+      <div>
+        <div style="font-weight:700;font-size:16px;">📅 04 e 05 de Setembro</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:2px;">ao vivo, online pelo Zoom</div>
+      </div>
+      <a href="#preco" class="btn btn-orange" style="width:auto;">QUERO MINHA VAGA</a>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-white"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
+
+<!-- ============ TODO NEGÓCIO JÁ CONHECE O EVENTO DE VENDAS ============ -->
+<section class="section bg-dark section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Todo negócio já conhece o Evento de Vendas. Quase nenhum faz do jeito certo.</h2>
+
+    <p class="body reveal">O infoprodutor faz lançamento. O mentor faz workshop. A academia faz semana de matrícula. A concessionária faz feirão. A loja faz liquidação de aniversário. A igreja faz congresso. O e-commerce faz Black Friday. Nomes diferentes, a mesma coisa: um Evento de Vendas.</p>
+    <p class="body reveal">Um dia (ou um fim de semana) em que toda a energia se concentra em converter os interessados que já existem, com preparação antes, entrega no dia e acompanhamento depois.</p>
+
+    <p class="lead-bold reveal">Então por que uns faturam 6 dígitos no evento e outros mal pagam o esforço? Porque a maioria faz o EVENTO e pula o PROCESSO:</p>
+
+    <ul class="x-list reveal">
+      <li><span class="x">✕</span> Convida a base 3 dias antes, num disparo genérico (em vez de 15-20 dias de captação 1:1)</li>
+      <li><span class="x">✕</span> Não confirma presença, não lembra, não faz check-in e torce pro pessoal aparecer</li>
+      <li><span class="x">✕</span> Não tem checklist: cada evento é uma reinvenção no desespero</li>
+      <li><span class="x">✕</span> E o pior: acabou o evento, acabou a venda. Ninguém faz o follow-up 1:1 dos dias seguintes, que é onde a MAIORIA das vendas acontece.</li>
+    </ul>
+
+    <p class="body reveal">O evento sem processo é um pico de esforço com metade do resultado.</p>
+    <p class="lead-bold reveal">O mesmo evento, com o processo completo (antes, durante e depois) fatura no mínimo 30% a mais.</p>
+    <p class="body reveal">Eu sei porque é exatamente isso que fazemos com clientes reais: pegamos o evento que eles já faziam, colocamos o processo por baixo, e o evento que "ia bem" virou o dia mais lucrativo do mês. Todo mês.</p>
+
+    <p class="body reveal">A pergunta que muda tudo não é "como eu vendo mais?". São duas: <strong>"Quando é o meu próximo Evento de Vendas?"</strong> Se você não tem resposta, seu faturamento não tem data. <strong>"Qual processo roda por baixo dele?"</strong> Se a resposta é "a gente se vira", você está deixando dinheiro na mesa em cada edição.</p>
+
+    <p class="body reveal">E aqui está o que o mercado esconde de você: os gurus vendem o formato da moda. Em 2021 era lançamento gratuito. Em 2024 virou lançamento pago. Agora é desafio. Ano que vem será outra coisa. Quem compra o formato, recomeça do zero a cada onda.</p>
+    <p class="accent-line reveal">Na Imersão Evento de Vendas eu não te ensino o formato da moda. Eu te ensino a máquina que roda por baixo de todos eles, e que continua funcionando quando a moda mudar. Você aprende o sistema uma vez. E troca a peça do meio quantas vezes quiser: webinário, workshop, aulão, feirão, imersão, encontro presencial.</p>
+    <p class="lead-bold reveal">Venda com data marcada. Todo mês. No formato que serve pro SEU negócio.</p>
+
+    <div class="btn-row center reveal"><a href="#preco" class="btn btn-outline">QUERO MINHA VAGA</a></div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<!-- ============ COMO FUNCIONA UM EVENTO DE VENDAS BEM FEITO ============ -->
+<section class="section bg-white section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Como funciona um Evento de Vendas bem feito</h2>
+    <p class="h-subtitle center reveal">(o mapa que você vai enxergar e desenhar na imersão)</p>
+
+    <p class="body reveal">Todo Evento de Vendas, não importa o nicho, passa pelas mesmas 5 fases:</p>
+
+    <div class="phase-list reveal">
+      <div class="phase-item"><div class="phase-num">1</div><p><strong>CONCEPÇÃO:</strong> Clareza de público, oferta e promessa. O que você vai vender e pra quem.</p></div>
+      <div class="phase-item"><div class="phase-num">2</div><p><strong>INFRAESTRUTURA:</strong> O ambiente montado ANTES de convidar: grupo, mensagens, oferta desenhada. Você prepara a casa antes de trazer as pessoas.</p></div>
+      <div class="phase-item"><div class="phase-num">3</div><p><strong>CAPTAÇÃO:</strong> Convites pra base que você JÁ tem no WhatsApp + estratégias pra multiplicar (indicação, parcerias, tráfego opcional).</p></div>
+      <div class="phase-item"><div class="phase-num">4</div><p><strong>O EVENTO:</strong> O dia D. Aqui entra a peça que muda por negócio: webinário, workshop, aulão experimental, feirão, encontro ao vivo. A entrega que transforma interessado em comprador.</p></div>
+      <div class="phase-item"><div class="phase-num">5</div><p><strong>FOLLOW-UP:</strong> Onde a MAIORIA das vendas acontece. O 1:1 dos dias seguintes com quem disse "vou pensar", quem não apareceu, quem quase comprou. É o dinheiro que todo mundo deixa na mesa.</p></div>
+    </div>
+
+    <p class="body reveal">E por baixo das 5 fases, a máquina: o Funil de WhatsApp, resposta imediata, lembrete de comparecimento, cadência de follow-up, pipeline visível. O sistema que garante que nenhum lead escape antes, durante e depois do evento.</p>
+    <p class="lead-bold reveal">Detalhe: você vai VIVER essa máquina na pele nesta imersão.</p>
+    <p class="body reveal">Do ingresso ao pós-evento, cada mensagem que você receber foi agendada por esse sistema, e no sábado à tarde eu abro a tela e te mostro este evento por dentro.</p>
+    <p class="body reveal">Nenhum curso no Brasil consegue te mostrar isso. Porque nenhum professor de "vendas" tem a operação rodando na frente do aluno.</p>
+  </div>
+</section>
+<div class="wave wave-from-white"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
+
+<!-- ============ DUAS FORMAS DE CHEGAR ============ -->
+<section class="section bg-dark section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Existem duas formas de chegar até aqui. As duas saem ganhando.</h2>
+
+    <p class="body reveal">Quem já faz evento vem colocar o processo por baixo do que já existe. Quem está começando vem fazer certo desde o primeiro dia. Olha os dois lados:</p>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <div class="path-head">
+          <span class="path-badge">Forma 01</span>
+          <h3 class="quote-title">"Eu estou começando agora no digital. Isso é pra mim?"</h3>
+        </div>
+        <p class="body" style="margin-top:0;">É, e talvez seja pra você mais do que pra todo mundo.</p>
+        <p class="body">O mercado te ensinou um caminho: produz conteúdo por meses, constrói audiência, e um dia, quem sabe, você lança. É por isso que tanta gente boa passa 1, 2 anos "se preparando", e nunca vende.</p>
+        <p class="body">O Evento de Vendas inverte esse jogo.</p>
+        <p class="body"><strong>Você não precisa de audiência pra fazer seu primeiro evento. Precisa da lista que já está no seu WhatsApp:</strong> contatos, grupos, ex-colegas, clientes antigos do presencial, indicações. Com 50 convites bem feitos, você enche um workshop pequeno. E um workshop pequeno, com o processo certo por baixo, gera as três coisas que quem começa mais precisa:</p>
+        <ul class="icon-list">
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Seus primeiros clientes</strong><p class="icon-item-desc">Vendas realizadas no evento e no follow-up da semana seguinte.</p></div></li>
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Sua oferta validada</strong><p class="icon-item-desc">Você descobre em 1 fim de semana o que levaria 6 meses de "teste de conteúdo".</p></div></li>
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Caixa</strong><p class="icon-item-desc">Para reinvestir no próximo evento, que já sai melhor, porque a estrutura se repete.</p></div></li>
+        </ul>
+        <p class="body">E tem o detalhe que ninguém te conta: esse é o formato que dá pra fazer sozinho. Sem equipe, sem estúdio, sem editor, sem gestor de tráfego. Um notebook, um Zoom, seu WhatsApp e o processo. No máximo, 1 pessoa pra te ajudar no dia.</p>
+        <p class="body">Eu conheço operações de 6 dígitos por ciclo, e conheço especialistas fazendo o primeiro evento da vida completamente sozinhos, com o MESMO mapa.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="path-head">
+          <span class="path-badge">Forma 02</span>
+          <h3 class="quote-title">"Eu já faço evento no meu negócio..."</h3>
+        </div>
+        <p class="body" style="margin-top:0;">Ótimo, então você é quem mais sai ganhando aqui.</p>
+        <p class="body">Você vai descobrir quanto o seu evento atual está deixando na mesa.</p>
+        <p class="body">E normalmente a resposta dói: captação curta demais, comparecimento na sorte, nenhum pipeline de quem participou, e um cemitério de "vou pensar" que ninguém nunca mais chamou.</p>
+        <p class="body">Um cliente meu de consultoria fazia evento de aniversário todo ano, do jeito que todo mundo faz. Colocamos o processo em cima do mesmo evento que ele já fazia: captação estruturada, agendamento, checklist de ações, follow-up 1:1 estratégico.</p>
+        <p class="lead-bold">Hoje o evento é mensal e fatura pelo menos R$ 80 mil extras todos os meses. O evento era o mesmo. O processo é que não existia.</p>
+      </div>
+    </div>
+
+    <div class="btn-row center reveal"><a href="#preco" class="btn btn-outline">QUERO MINHA VAGA</a></div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<!-- ============ ISSO FUNCIONA PARA O MEU NEGÓCIO ============ -->
+<section class="section bg-white section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Isso funciona para o meu negócio?</h2>
+    <p class="body reveal">Se o seu cliente pode decidir em dias (não em meses) e você tem algo pra ofertar todo mês, funciona. Olha os exemplos:</p>
+
+    <ul class="icon-list reveal">
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Especialista começando do zero no digital</strong><p class="icon-item-desc">Um workshop pago pequeno, feito com a lista do próprio WhatsApp → seus primeiros clientes, sua oferta validada e caixa no bolso, antes mesmo de ter "audiência".</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Infoprodutor / mentor com negócio rodando</strong><p class="icon-item-desc">Evento pago pequeno e mensal → mentoria vendida todo mês, sem depender de um lançamento gigante algumas vezes por ano.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Terapeuta / psicólogo / consultor</strong><p class="icon-item-desc">Encontro gratuito ou workshop pago → turma e agenda lotadas.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Academia / estúdio</strong><p class="icon-item-desc">Aulão experimental mensal + oferta de matrícula → agenda cheia com data marcada.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Clínica de estética / odonto</strong><p class="icon-item-desc">Dia de avaliação com condição especial → agenda de procedimentos fechada.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Loja de carros / móveis / eletro</strong><p class="icon-item-desc">Feirão mensal para a base do WhatsApp → estoque girando em 1 fim de semana.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">E-commerce</strong><p class="icon-item-desc">Campanha-relâmpago mensal para base própria → pico de vendas sem depender de marketplace.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Igreja / comunidade / projeto</strong><p class="icon-item-desc">Congresso e encontro mensal → o modelo que rodamos com clientes reais todos os meses.</p></div></li>
+    </ul>
+
+    <p class="body reveal">E se você JÁ faz algum desses eventos: o método não substitui o que você faz — ele coloca o motor que faltava por baixo.</p>
+
+    <div class="btn-row center reveal"><a href="#preco" class="btn btn-outline">QUERO MINHA VAGA</a></div>
+  </div>
+</section>
+<div class="wave wave-from-white"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
+
+<!-- ============ PRA QUEM NÃO É ============ -->
+<section class="section bg-dark section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">E pra quem NÃO é (leia antes de comprar)</h2>
+    <p class="body reveal">Eu prefiro te falar agora do que pegar seu dinheiro e te devolver frustração:</p>
+
+    <ul class="icon-list reveal">
+      <li><span class="icon-badge no">✕</span><div><strong class="icon-item-title">B2B de ciclo longo com comitê de decisão</strong><p class="icon-item-desc">Venda de 6 meses que passa por 3 diretores — evento mensal não é sua ferramenta.</p></div></li>
+      <li><span class="icon-badge no">✕</span><div><strong class="icon-item-title">Quem vive só de licitação ou contrato institucional</strong><p class="icon-item-desc">Não há decisão de compra pra acelerar.</p></div></li>
+      <li><span class="icon-badge no">✕</span><div><strong class="icon-item-title">Quem quer resultado sem aparecer</strong><p class="icon-item-desc">O evento tem um rosto. Pode ser você ou alguém do time, mas alguém sobe no palco (nem que seja um Zoom).</p></div></li>
+      <li><span class="icon-badge no">✕</span><div><strong class="icon-item-title">Quem está no zero absoluto</strong><p class="icon-item-desc">Sem expertise, sem oferta possível e sem nenhum contato. O evento amplifica o que existe. <em>(Atenção: "começando no digital" NÃO é zero absoluto — se você tem conhecimento pra entregar e contatos no WhatsApp, você tem tudo que precisa pro primeiro evento.)</em></p></div></li>
+      <li><span class="icon-badge no">✕</span><div><strong class="icon-item-title">Caçador de fórmula da moda</strong><p class="icon-item-desc">Se você quer "o hack que tá bombando", procura um guru. Aqui a gente constrói máquina.</p></div></li>
+    </ul>
+
+    <div class="btn-row center reveal"><a href="#preco" class="btn btn-outline">QUERO MINHA VAGA</a></div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#f2691c"/></svg></div>
+
+<!-- ============ CRONOGRAMA DA IMERSÃO ============ -->
+<section class="schedule-banner">
+  <div class="wrap">
+    <h2 class="schedule-title-main reveal">Cronograma da Imersão</h2>
+    <div class="schedule-grid reveal">
+      <div class="schedule-item">
+        <div class="schedule-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div class="schedule-item-title">Dia 04 de Setembro (Sexta)</div>
+        <div class="schedule-item-sub">De 18h30 às 21h30</div>
+      </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-item">
+        <div class="schedule-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div class="schedule-item-title">Dia 05 de Setembro (Sábado)</div>
+        <div class="schedule-item-sub">De 9h às 17h</div>
+      </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-item">
+        <div class="schedule-icon">
+          <svg viewBox="0 0 24 24" fill="#ffffff" stroke="none"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4Z"></path></svg>
+        </div>
+        <div class="schedule-item-title">Horário de Brasília</div>
+        <div class="schedule-item-sub">100% pelo Zoom.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-orange"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<!-- ============ O QUE VOCÊ VAI VER ============ -->
+<section class="section bg-white section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Imersão Evento de Venda</h2>
+    <p class="body center reveal" style="color:var(--text-muted);margin-top:-8px;">Em 2 dias você monta, dentro do seu negócio, a estrutura completa de um Evento de Vendas. Esqueça lançamento pago, lançamento gratuito, desafio, workshop — são só nomes diferentes pra mesma máquina. Aprenda a máquina uma vez e troque a peça do meio quantas vezes o mercado mudar.</p>
+
+    <div class="day-columns reveal">
+      <div class="day-column">
+        <div class="day-column-head">📅 Dia 1 — Sexta-feira</div>
+        <div class="day-card">
+          <div class="day-head"><div class="txt">18h30 às 21h30 — A TESE</div></div>
+          <div class="day-body">
+            <ul class="dot-list" style="margin-top:0;">
+              <li>A autópsia do seu faturamento: por que ele não tem data (e o exercício que vai te mostrar quanto dinheiro morreu no seu WhatsApp nos últimos 30 dias)</li>
+              <li>O mapa das 5 fases do Evento de Vendas</li>
+              <li>A galeria de formatos: o evento certo pra cada tipo de negócio — com exemplos reais de especialistas, academia, clínica, loja e e-commerce</li>
+              <li>A matemática: engenharia reversa com números reais de eventos que rodamos todos os meses (você vai ver os bastidores de um evento com 670 ingressos e 61 vendas de R$ 2.997)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-column">
+        <div class="day-column-head">📅 Dia 2 — Sábado</div>
+        <div class="day-card">
+          <div class="day-head"><div class="txt">9h às 12h30 — A CONSTRUÇÃO</div></div>
+          <div class="day-body">
+            <ul class="dot-list" style="margin-top:0;">
+              <li>Desenhando o SEU evento: você sai da manhã com formato, oferta e data definidos — no papel, pronto pra executar</li>
+              <li>Follow-up, o pilar do dinheiro: as duas janelas (24h e 30 dias) e o 1:1 que fecha a maioria das vendas</li>
+              <li>O caminho da implementação (O caminho para quem deseja acelerar o processo)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-head"><div class="txt">14h às 17h — A MÁQUINA ABERTA (aula prática)</div></div>
+          <div class="day-body">
+            <p class="body" style="margin-top:0;">Eu abro minha operação na tela. Ao vivo, sem ensaio:</p>
+            <ul class="dot-list">
+              <li>O pipeline DESTE evento em tempo real — quem comprou, quem entrou no grupo, quem compareceu em cada dia</li>
+              <li>Disparos, cadências e a integração Zoom → WhatsApp → follow-up automático</li>
+              <li>Check-in e formulário de evento presencial (como nossos clientes fazem)</li>
+              <li>Como montar isso no seu negócio, passo a passo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row center reveal"><a href="#preco" class="btn btn-outline">QUERO MINHA VAGA</a></div>
+  </div>
+</section>
+<div class="wave wave-from-white"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
+
+<!-- ============ POR QUE EU POSSO TE ENSINAR ISSO ============ -->
+<section class="section bg-dark section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal" style="margin-bottom:32px;">Por que eu posso te ensinar isso</h2>
+
+    <div class="bio-grid">
+      <div class="journey-gallery reveal">
+        <figure><img src="img/journey-1.jpg" alt="Edvan Jacques gravando seu primeiro vídeo, no início do blog Estudante Audaz, em 2015"></figure>
+        <figure><img src="img/journey-2.jpg" alt="Edvan Jacques planejando conteúdo à mão, nos primeiros meses no digital"></figure>
+        <figure><img src="img/journey-3.jpg" alt="Edvan Jacques recebendo um prêmio no palco de um evento de lançamento"></figure>
+        <figure><img src="img/journey-4.jpg" alt="Edvan Jacques com o prêmio 7 dígitos em 12 meses"></figure>
+        <figure><img src="img/journey-5.jpg" alt="Edvan Jacques hoje, operando o Funil de WhatsApp na sua estrutura atual"></figure>
+        <figure><img src="img/journey-6.jpg" alt="Edvan Jacques com o prêmio 7 dígitos em 12 meses, em frente a milhares de pessoas"></figure>
+      </div>
+
+      <div>
+        <p class="body reveal" style="margin-top:0;">Meu nome é Edvan Jacques.</p>
+        <p class="body reveal">Eu não sou guru de palco. Sou o cara que roda Evento de Vendas todos os meses, com dinheiro de verdade, há anos, pra mim e para clientes.</p>
+        <p class="body reveal">Construí duas empresas do zero. Aprendi na prática, errando com o meu próprio dinheiro, o que funciona e o que é conversa de vendedor de curso.</p>
+        <p class="body reveal">Hoje eu opero:</p>
+        <ul class="icon-list reveal">
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Uma imersão mensal</strong><p class="icon-item-desc">Em um ciclo vendeu 670 ingressos e converteu 61 mentorias de R$ 2.997: R$ 222 mil em um único ciclo, com 87% de margem.</p></div></li>
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Um segundo evento mensal</strong><p class="icon-item-desc">Em um nicho pequeno e específico, provando que o método funciona mesmo sem nicho "milionário".</p></div></li>
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Consultoria</strong><p class="icon-item-desc">Para negócios que aplicam o evento mensal que eu vou te ensinar e faturam todos os meses pelo menos R$ 80 mil extras.</p></div></li>
+          <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">O Never Lose Sales</strong><p class="icon-item-desc">O software de Funil de WhatsApp que sustenta tudo isso, usado por academias, clínicas, imobiliárias e infoprodutores.</p></div></li>
+        </ul>
+        <p class="body reveal">Eu não vou te mostrar print de faturamento de 2025. Eu vou abrir a operação DESTE evento, ao vivo, na sua frente, no sábado à tarde.</p>
+        <p class="lead-bold reveal">Quem FEZ mostra a tela. Quem só ensina mostra slide.</p>
+        <p class="body reveal">E vou te falar o que me move: eu tenho angústia de ver profissional bom, empresário sério, gente que construiu conhecimento e negócio de verdade, perdendo pra aventureiro que só responde mais rápido e vende com mais barulho.</p>
+        <p class="lead-bold reveal">Você não precisa de mais talento. Precisa de uma data e de uma máquina. É isso que eu vim te entregar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<!-- ============ PROVA SOCIAL EM NÚMEROS ============ -->
+<section class="section bg-white section-pad">
+  <div class="wrap">
+    <div class="copy">
+      <h2 class="h-title center reveal">Isso não é teoria: são eventos reais que ajudei a construir</h2>
+      <p class="body center reveal">Nichos diferentes, formatos diferentes, o mesmo mapa por baixo:</p>
+    </div>
+
+    <div class="case-grid reveal">
+      <div class="card case-card">
+        <img class="case-photo" src="img/case-ipe.jpg" alt="Círculo de mulheres em vivência do Instituto Ipê Amarelo">
+        <span class="path-badge">Mentoria / Imersão</span>
+        <div class="case-name">Instituto Ipê Amarelo</div>
+        <div class="case-metric">R$ 222 mil<span>faturados em um único ciclo</span></div>
+        <p class="body" style="margin:14px 0 0;">670 ingressos vendidos e 61 mentorias de R$ 2.997 fechadas, com 87% de margem.</p>
+      </div>
+
+      <div class="card case-card">
+        <img class="case-photo" src="img/case-arandu.jpg" alt="Bastidores de evento da Arandu Academy">
+        <span class="path-badge">Formação / Curso</span>
+        <div class="case-name">Arandu Academy</div>
+        <div class="case-metric">R$ 190 mil<span>faturados em um único ciclo</span></div>
+        <p class="body" style="margin:14px 0 0;">880 ingressos de R$ 29,90 e 82 formações de R$ 1.997 fechadas — 2,8x de retorno sobre os R$ 67,8 mil investidos em tráfego.</p>
+      </div>
+
+      <div class="card case-card">
+        <img class="case-photo" src="img/case-soumais.jpg" alt="Unidade da academia Sou Mais Cristo Academias">
+        <span class="path-badge">Negócio físico · Academia</span>
+        <div class="case-name">Sou Mais Cristo Academias</div>
+        <div class="case-metric">R$ 88,7 mil<span>em matrículas, em uma única unidade</span></div>
+        <p class="body" style="margin:14px 0 0;">280 agendamentos e 89 matrículas fechadas no plano anual (ticket médio de R$ 997) — 33x de retorno sobre R$ 2.700 investidos em tráfego.</p>
+      </div>
+    </div>
+
+    <div class="copy">
+      <p class="lead-bold center reveal" style="margin-top:30px;">Mentoria, curso ou academia física: o mapa é o mesmo. E é esse mapa que você monta pro seu negócio em 2 dias.</p>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-white"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
+
+<!-- ============ QUANTO CUSTA / PRICE BOX ============ -->
+<section id="preco" class="section bg-dark section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Quanto custa ter venda com data marcada?</h2>
+    <p class="body center reveal">Vou te falar o que esses 2 dias valeriam se eu cobrasse o preço da lógica:</p>
+
+    <ul class="icon-list reveal">
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Uma consultoria minha</strong><p class="icon-item-desc">Para desenhar seu evento não sai por menos de R$ 30.000 <em>(e tenho cliente que paga mais que isso)</em>.</p></div></li>
+      <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">O acesso à matemática e aos bastidores reais</strong><p class="icon-item-desc">De eventos que faturam 6 dígitos por ciclo: não tem preço de mercado, porque ninguém abre isso.</p></div></li>
+    </ul>
+
+    <div class="price-card-v2 reveal">
+      <span class="price-badge">Lote 0 · vagas limitadas</span>
+      <div class="price-v2-head">IMERSÃO EVENTO DE VENDA — 04 e 05 de Setembro</div>
+      <div class="price-v2-old">De R$ 497,00</div>
+      <div class="price-v2-new"><span>ou</span> R$ 47<span>,00 à vista</span></div>
+      <div class="price-v2-fire">🔥 Menos que uma pizza. Pra aprender a colocar data no seu faturamento.</div>
+
+      <ul class="icon-list price-v2-includes">
+        <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Acesso ao vivo aos 2 dias</strong><p class="icon-item-desc">Sexta (18h30 às 21h30) e sábado (9h às 17h), 100% pelo Zoom.</p></div></li>
+        <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">A Máquina Aberta</strong><p class="icon-item-desc">Aula prática de sábado à tarde: eu abro minha operação ao vivo, na sua frente.</p></div></li>
+        <li><span class="icon-badge ok">✓</span><div><strong class="icon-item-title">Acesso à comunidade</strong><p class="icon-item-desc">Da Imersão, liberado assim que você garante sua vaga.</p></div></li>
+      </ul>
+
+      <a href="https://pagamento.institutoaudaz.com/pay/imersao-evento-de-venda" class="btn btn-orange" style="width:100%;">🔥 SIM, QUERO GARANTIR MINHA VAGA</a>
+      <div class="trust-row center" style="margin-top:20px;justify-content:center;">
+        <span class="trust-item">🔒 Pagamento seguro</span>
+        <span class="trust-item">✓ Risco zero na sexta</span>
+      </div>
+      <div class="price-v2-note">Lote 0 — o valor sobe quando o lote esgotar.</div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#eef1ea"/></svg></div>
+
+<!-- ============ POR QUE TÃO BARATO / RISCO ZERO ============ -->
+<section class="section bg-lightgray section-pad-sm">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Por que tão barato?</h2>
+    <p class="body reveal">Simples e transparente: a imersão é a porta de entrada do meu ecossistema.</p>
+    <p class="body reveal">Uma parte de quem participar vai querer implementar comigo depois, e é aí que eu ganho.</p>
+    <p class="body reveal">Você recebe um conteúdo que vale 50x o ingresso; eu ganho a chance de te mostrar meu trabalho.</p>
+    <p class="body reveal">Todo mundo sai no lucro. Isso, aliás, é um Evento de Vendas funcionando, e você vai ver ele por dentro.</p>
+
+    <h2 class="h-title center reveal" style="margin-top:44px;">Risco zero, na moral</h2>
+    <p class="body center reveal">Participa da sexta-feira inteira. Se até o fim da primeira noite você achar que não é pra você, me manda uma mensagem e eu devolvo seus R$ 47. Sem perguntas, sem constrangimento, sem perder a amizade.</p>
+  </div>
+</section>
+<div class="wave wave-from-lightgray"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
+
+<!-- ============ FAQ ============ -->
+<section class="section bg-dark section-pad">
+  <div class="wrap copy">
+    <h2 class="h-title center reveal">Perguntas Frequentes</h2>
+
+    <div class="faq-list reveal">
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Funciona pro meu nicho?<span class="chev">▾</span></button>
+        <div class="faq-a">Se o seu cliente pode decidir a compra em dias e você tem o que ofertar todo mês, funciona. Na dúvida, releia a seção "pra quem é / pra quem não é". Eu fui honesto lá.</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Eu não tenho audiência.<span class="chev">▾</span></button>
+        <div class="faq-a">Você tem. Ela só não está no Instagram, está no seu WhatsApp. Contatos, grupos, clientes antigos, indicações. O método começa exatamente pela audiência que você já tem e que está parada. E se quiser trazer audiência nova, existe uma estratégia de tráfego pago que eu mostro na imersão.</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Nunca vendi nada online. Consigo aplicar?<span class="chev">▾</span></button>
+        <div class="faq-a">Consegue. O Evento de Vendas é justamente o formato de menor barreira pra começar: dá pra executar sozinho, com a lista do próprio WhatsApp, sem tráfego e sem equipe. Na imersão você desenha o SEU primeiro evento, com formato, oferta e data. O que eu não recomendo é entrar se você não tem nenhuma expertise ou oferta possível, releia o "pra quem não é".</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Eu já faço eventos/promoções no meu negócio. Vou aprender algo novo?<span class="chev">▾</span></button>
+        <div class="faq-a">Vai, e provavelmente é pra você que a imersão mais paga. O evento você já tem; o que eu entrego é o processo em volta dele: captação de 15-20 dias, confirmação e comparecimento, pipeline do evento e o follow-up 1:1 da semana seguinte. É a diferença entre um evento que "vai bem" e um evento que é o dia mais lucrativo do mês. No sábado à tarde você vê esse processo rodando ao vivo, na tela.</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Eu não tenho tempo pra evento todo mês.<span class="chev">▾</span></button>
+        <div class="faq-a">O primeiro dá trabalho. Do segundo em diante, você repete a estrutura: mesmas mensagens, mesmo mapa, só muda a data. É por isso que eu consigo rodar vários por mês, e vou te mostrar como.</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Já fiz curso de vendas / lançamento e não funcionou.<span class="chev">▾</span></button>
+        <div class="faq-a">Provavelmente te venderam um formato. O formato muda a cada 2 anos. Aqui você aprende o sistema por baixo dos formatos, e vê ele rodando ao vivo, com números reais, na tela.</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Consigo ter acesso à gravação?<span class="chev">▾</span></button>
+        <div class="faq-a">O ingresso te dá o direito de assistir ao vivo. Se quiser a gravação da imersão é só adquiri-la junto na hora de comprar o seu ingresso. A aula prática de sábado à tarde é só ao vivo, porque eu abro números e bastidores em tempo real que não ficam gravados.</div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" data-faq-toggle>Vai ter venda de alguma coisa no final?<span class="chev">▾</span></button>
+        <div class="faq-a">Vai, e eu te falo isso de cara, porque odeio pegadinha. No sábado eu apresento o Programa MEV, pra quem quiser implementar comigo. É opcional. A imersão entrega o método completo por si só: você sai sabendo exatamente o que fazer, com ou sem o programa.</div>
+      </div>
+    </div>
+
+    <div class="footer reveal" style="margin-top:44px;">
+      <p>Ainda tem alguma dúvida?<br>Fale com a equipe através do WhatsApp abaixo.</p>
+      <div class="btn-row center" style="margin:0;"><a href="https://wa.me/554188631443?text=Ol%C3%A1%2C%20tenho%20d%C3%BAvidas%20sobre%20a%20Imers%C3%A3o%20Evento%20de%20Vendas" target="_blank" rel="noopener" class="btn btn-outline">Quero Falar com a Equipe</a></div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<footer class="section bg-white">
+  <div class="wrap">
+    <div class="site-footer">
+      <img src="img/footer-logo.png" alt="Instituto Audaz">
+      <p>Instituto Audaz — Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-faq-toggle]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var isOpen = item.getAttribute('data-open') === 'true';
+      document.querySelectorAll('.faq-item').forEach(function(other){
+        if(other !== item){
+          other.setAttribute('data-open','false');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.setAttribute('data-open','false');
+        answer.style.maxHeight = null;
+      } else {
+        item.setAttribute('data-open','true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, {threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
