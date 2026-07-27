@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra Confirmada — Imersão Evento de Venda</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<style>
+  :root{
+    --bg-dark-1: #0b2016;
+    --bg-dark-2: #143a24;
+    --white: #ffffff;
+    --offwhite: #f6f7f2;
+    --lightgray: #eef1ea;
+    --ink: #15221a;
+    --muted: #4d5f53;
+    --border-light: #e1e6da;
+    --orange: #f2691c;
+    --orange-deep: #d9500b;
+    --red-x: #e5493f;
+    --shadow-card: 0 20px 45px -20px rgba(11,32,22,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background:var(--white);
+  }
+  h1,h2,h3,h4{
+    font-family:'Poppins','Segoe UI',system-ui,sans-serif;
+    font-weight:700;
+    line-height:1.2;
+    text-wrap:balance;
+    margin:0;
+    color:var(--heading);
+  }
+  p{margin:0;color:var(--text);}
+  ul{margin:0;padding:0;list-style:none;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;}
+  em{font-style:italic;}
+  strong{font-weight:700;color:var(--text-strong);}
+
+  .bg-white{
+    --heading:var(--ink); --text:#33463a; --text-strong:var(--ink);
+    --text-muted:var(--muted); --accent:#1f8f57; --card-bg:var(--white);
+    --card-border:var(--border-light); --card-shadow:var(--shadow-card);
+    background:var(--white); color:var(--text);
+  }
+  .bg-lightgray{
+    --heading:var(--ink); --text:#33463a; --text-strong:var(--ink);
+    --text-muted:var(--muted); --accent:#1f8f57; --card-bg:var(--white);
+    --card-border:var(--border-light); --card-shadow:var(--shadow-card);
+    background:var(--lightgray); color:var(--text);
+  }
+  .bg-dark{
+    --heading:#f6faf7; --text:#eef4f0; --text-strong:#ffffff;
+    --text-muted:#e8f0ea; --accent:#5fe6a0; --card-bg:rgba(255,255,255,0.05);
+    --card-border:rgba(255,255,255,0.14); --card-shadow:none;
+    background:var(--bg-dark-2);
+    color:var(--text);
+  }
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
+  .copy{max-width:700px;margin:0 auto;}
+  .section{position:relative;}
+  .section-pad{padding:36px 0;}
+  .section-pad-sm{padding:44px 0;}
+  .section-pad-hero{padding:28px 0 40px;}
+  @media (min-width:640px){
+    .section-pad{padding:52px 0;}
+    .section-pad-sm{padding:64px 0;}
+    .section-pad-hero{padding:40px 0 52px;}
+  }
+
+  .wave{display:block;width:100%;height:40px;line-height:0;}
+  .wave svg{width:100%;height:100%;display:block;}
+  @media (min-width:640px){.wave{height:60px;}}
+  .wave-from-white{background:var(--white);}
+  .wave-from-lightgray{background:var(--lightgray);}
+  .wave-from-dark{background:var(--bg-dark-2);}
+  .wave-from-orange{background:var(--orange);}
+
+  .center{text-align:center;}
+
+  .kicker{
+    font-size:18px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;
+  }
+  @media (min-width:640px){.kicker{font-size:21px;}}
+  h2.h-title{font-size:clamp(23px,4.6vw,30px);margin:0 0 20px;}
+  h2.h-title.center{text-align:center;}
+  h1.h-title{font-size:clamp(24px,5vw,34px);margin:0 0 20px;}
+  h1.h-title.center{text-align:center;}
+  .h-subtitle{font-size:14.5px;font-style:italic;color:var(--text-muted);margin:-8px 0 22px;}
+  .h-subtitle.center{text-align:center;}
+
+  p.body{font-size:16.5px;line-height:1.75;margin:18px 0;}
+  p.body.center{text-align:center;}
+  .lead-bold{font-weight:700;font-size:19px;line-height:1.5;margin:24px 0;color:var(--heading);}
+  .lead-bold.center{text-align:center;}
+  .accent-line{color:var(--accent);font-weight:700;font-size:19px;line-height:1.5;margin:24px 0;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    padding:17px 26px;border-radius:12px;font-weight:700;font-size:15.5px;
+    border:none;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  @media (min-width:520px){.btn{width:auto;padding:17px 36px;}}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-orange{
+    background:linear-gradient(180deg,var(--orange) 0%, var(--orange-deep) 100%);
+    color:#fff8f2;box-shadow:0 14px 30px -12px rgba(242,105,28,0.55);
+  }
+  .btn-orange:hover{box-shadow:0 18px 34px -12px rgba(242,105,28,0.7);}
+  .btn-outline{background:transparent;border:1.5px solid var(--accent);color:var(--accent);}
+  .btn-row{display:flex;margin:28px 0 4px;}
+  .btn-row.center{justify-content:center;}
+
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;
+    font-size:12px;font-weight:700;letter-spacing:.02em;
+    border:1px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.06);
+    color:#e3f0e6;
+  }
+
+  .trust-row{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:22px;}
+  .trust-item{display:flex;align-items:center;gap:7px;font-size:16px;color:var(--text-muted);}
+  @media (min-width:640px){.trust-item{font-size:17.5px;}}
+
+  .top-strip{background:#ffffff;padding:14px 0;text-align:center;}
+  .top-strip-text{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--bg-dark-2);
+  }
+  .top-strip-text img{height:22px;width:auto;display:block;}
+  @media (min-width:640px){.top-strip-text{font-size:15px;}}
+
+  .card{
+    background:var(--card-bg);border:1px solid var(--card-border);
+    border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:var(--card-shadow);
+  }
+  @media (min-width:640px){.card{padding:30px 32px;}}
+
+  .path-badge{
+    display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;
+    font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+    background:rgba(95,230,160,0.14);border:1px solid rgba(95,230,160,0.35);
+    color:var(--accent);margin-bottom:12px;
+  }
+
+  .offer-card{display:flex;flex-direction:column;gap:24px;}
+  @media (min-width:700px){.offer-card{flex-direction:row;align-items:center;}}
+  .offer-card img{border-radius:14px;width:100%;}
+  @media (min-width:700px){.offer-card img{width:240px;flex-shrink:0;}}
+
+  .schedule-banner{
+    background:var(--orange);
+    padding:52px 0;
+  }
+  .schedule-title-main{
+    font-family:'Poppins',sans-serif;font-weight:800;color:#fff8f2;text-align:center;
+    text-transform:uppercase;letter-spacing:.03em;font-size:clamp(20px,4vw,26px);
+    margin-bottom:40px;
+  }
+  .schedule-grid{display:flex;flex-direction:column;gap:32px;align-items:center;}
+  @media (min-width:760px){.schedule-grid{flex-direction:row;justify-content:center;gap:0;}}
+  .schedule-item{text-align:center;padding:0 34px;}
+  .schedule-divider{display:none;}
+  @media (min-width:760px){.schedule-divider{display:block;width:1px;height:64px;background:rgba(255,255,255,0.35);}}
+  .schedule-icon{
+    width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,0.16);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+  }
+  .schedule-icon svg{width:22px;height:22px;}
+  .schedule-item-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:17.5px;color:#fff;margin-bottom:5px;}
+  .schedule-item-sub{font-size:17px;color:rgba(255,255,255,0.88);}
+
+  .site-footer{padding:44px 0 36px;text-align:center;}
+  .site-footer img{width:130px;margin:0 auto 16px;display:block;}
+  .site-footer p{font-size:13px;color:var(--text-muted);letter-spacing:.02em;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<!-- ============ BARRA DE DESTAQUE ============ -->
+<div class="top-strip">
+  <span class="top-strip-text"><img src="img/favicon.png" alt=""> Imersão Evento de Venda</span>
+</div>
+
+<!-- ============ COMPRA CONFIRMADA + FORMULÁRIO ============ -->
+<section class="section bg-dark section-pad-hero">
+  <div class="wrap copy">
+    <p class="kicker center reveal">✅ COMPRA CONFIRMADA!</p>
+    <div class="trust-row center reveal" style="justify-content:center;">
+      <span class="trust-item">📅 Dias 04 e 05 de Setembro</span>
+      <span class="trust-item">Evento 100% on-line</span>
+    </div>
+
+    <h1 class="h-title center reveal" style="margin-top:22px;">Falta apenas um passo para garantir sua vaga para concluir sua inscrição, responda:</h1>
+
+    <div class="card reveal" style="padding:10px;">
+      <iframe src="https://app.neverlosesales.com.br/f/gmvida?embed=true" width="100%" height="600" frameborder="0" style="border:none;border-radius:8px;display:block;" allow="camera; microphone"></iframe>
+    </div>
+
+    <p class="body center reveal">Após responder as questões, toque no botão abaixo para receber o link e materiais do evento:</p>
+    <div class="btn-row center reveal"><a href="https://chat.whatsapp.com/IKAfionSZXY39pWYPRbglm" target="_blank" rel="noopener" class="btn btn-orange">ENTRAR NO GRUPO DO WHATSAPP</a></div>
+  </div>
+</section>
+<div class="wave wave-from-dark"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,72 480,2 720,22 C960,44 1200,-6 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<!-- ============ ÚLTIMA OFERTA — GRAVAÇÃO ============ -->
+<section class="section bg-white section-pad">
+  <div class="wrap copy">
+    <div class="card offer-card reveal">
+      <img src="img/gravacao-oferta.png" alt="Gravação — Imersão Evento de Vendas">
+      <div>
+        <span class="path-badge" style="background:rgba(242,105,28,0.12);border-color:rgba(242,105,28,0.35);color:var(--orange-deep);">ÚLTIMA OFERTA!</span>
+        <p class="body" style="margin-top:0;">Essa é a sua última oportunidade de Levar a GRAVAÇÃO da Imersão Evento de Venda por apenas R$ 297,00</p>
+        <p class="lead-bold">Disponível só até o inicio da Imersão!</p>
+        <div class="btn-row"><a href="https://pagamento.institutoaudaz.com/pay/gravacao-imersao-evento-de-vendas-setembro/1click" class="btn btn-orange">Adquirir Gravação</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-white"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#f2691c"/></svg></div>
+
+<!-- ============ CRONOGRAMA DA IMERSÃO ============ -->
+<section class="schedule-banner">
+  <div class="wrap">
+    <h2 class="schedule-title-main reveal">Cronograma da Imersão</h2>
+    <div class="schedule-grid reveal">
+      <div class="schedule-item">
+        <div class="schedule-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div class="schedule-item-title">Dia 04 de Setembro (Sexta)</div>
+        <div class="schedule-item-sub">De 18h30 às 21h30</div>
+      </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-item">
+        <div class="schedule-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <div class="schedule-item-title">Dia 05 de Setembro (Sábado)</div>
+        <div class="schedule-item-sub">De 9h às 17h</div>
+      </div>
+      <div class="schedule-divider"></div>
+      <div class="schedule-item">
+        <div class="schedule-icon">
+          <svg viewBox="0 0 24 24" fill="#ffffff" stroke="none"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4Z"></path></svg>
+        </div>
+        <div class="schedule-item-title">Horário de Brasília</div>
+        <div class="schedule-item-sub">100% pelo Zoom.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wave wave-from-orange"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+
+<footer class="section bg-white">
+  <div class="wrap">
+    <div class="site-footer">
+      <img src="img/footer-logo.png" alt="Instituto Audaz">
+      <p>Instituto Audaz — Todos os direitos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, {threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
