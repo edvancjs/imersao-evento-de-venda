@@ -134,12 +134,46 @@
   /* ===== hero ===== */
   .hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;}
   @media (min-width:900px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:52px;}}
+  .hero-copy{display:flex;flex-direction:column;}
   .hero-eyebrow{font-size:13.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;}
   .hero-date{font-size:14px;color:var(--text-muted);margin-top:3px;margin-bottom:22px;}
   .hero-title{font-size:clamp(28px,6vw,42px);margin-bottom:20px;}
   .hero-bold{font-weight:700;font-size:18px;line-height:1.55;margin:0 0 18px;}
   .hero-sub{font-size:16.5px;line-height:1.75;margin:0 0 28px;}
   .trust-row{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:22px;}
+  .hero-date-mobile{display:none;}
+  .hero-tags{display:none;}
+  .hero-sub-mobile{display:none;}
+  /* mobile: lead with the short method line, then the punchy headline + bold line
+     stay together uninterrupted, and the button closes it out — copy itself
+     is untouched, only reordered/trimmed for a cleaner, shorter first screen */
+  @media (max-width:639px){
+    .hero-section.section-pad{padding-top:28px;padding-bottom:40px;}
+    .hero-grid{gap:20px;}
+    .hero-badge{display:none;}
+    .hero-eyebrow{
+      margin-top:0 !important;font-size:27px;font-weight:800;text-transform:none;
+      letter-spacing:normal;line-height:1.2;
+    }
+    .hero-date{display:none;}
+    .hero-date-mobile{display:block;font-size:16px;color:var(--text-muted);margin-top:6px;margin-bottom:0;}
+    .hero-title{order:2;margin:0 0 14px;}
+    .hero-bold{order:3;margin-bottom:18px;font-weight:400;}
+    .hero-bold strong{font-weight:400;}
+    .hero-sub{display:none;}
+    .hero-sub-mobile{display:block;order:1;margin:14px 0 20px;font-size:18px;line-height:1.6;}
+    .hero-trust{display:none;}
+    .hero-tags{
+      display:block;order:4;text-align:center;font-size:15px;font-weight:800;
+      letter-spacing:.04em;text-transform:uppercase;color:var(--text-strong);
+      margin:0 0 20px;padding:14px 0;
+      border-top:1px solid rgba(255,255,255,0.28);border-bottom:1px solid rgba(255,255,255,0.28);
+    }
+    .hero-cta{order:5;margin:0 0 4px;}
+    .authority-col.offset{margin-top:20px;}
+    .authority-gallery{gap:10px;}
+    .authority-col{gap:10px;}
+  }
   .trust-item{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--text-muted);}
   .lote-pill{
     display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:10px 16px;
@@ -322,8 +356,9 @@
   }
   .price-v2-head{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--text-strong);margin-bottom:24px;line-height:1.4;}
   .price-v2-old{font-size:16px;color:#7d9186;text-decoration:line-through;margin-bottom:6px;}
-  .price-v2-new{font-family:'Poppins',sans-serif;font-weight:800;font-size:42px;color:var(--accent);margin-bottom:10px;}
-  .price-v2-new span{font-size:15px;font-weight:600;color:var(--text-muted);}
+  .price-v2-new{font-family:'Poppins',sans-serif;font-weight:800;font-size:44px;line-height:1.1;color:var(--accent);margin-bottom:12px;}
+  .price-v2-new span{font-size:0.72em;font-weight:700;color:var(--accent);}
+  .price-v2-cash{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--text-strong);margin-bottom:20px;}
   .price-v2-fire{font-size:13.5px;color:var(--text-muted);margin-bottom:26px;line-height:1.5;}
   .price-v2-includes{
     text-align:left;margin:0 0 28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.14);
@@ -359,23 +394,27 @@
 <body>
 
 <!-- ============ HERO ============ -->
-<section class="section bg-dark section-pad">
+<section class="section bg-dark section-pad hero-section">
   <div class="wrap">
     <div class="hero-grid">
-      <div>
-        <span class="badge reveal">IMERSÃO ONLINE E AO VIVO | 04 E 05 DE SETEMBRO</span>
+      <div class="hero-copy">
+        <span class="badge reveal hero-badge">IMERSÃO ONLINE E AO VIVO | 04 E 05 DE SETEMBRO</span>
         <div class="hero-eyebrow reveal" style="margin-top:22px;">Imersão Evento de Venda</div>
         <div class="hero-date reveal">04 e 05 de Setembro</div>
+        <div class="hero-date-mobile reveal">04 e 05 de Setembro | Evento 100% Online</div>
 
         <h1 class="hero-title reveal">Você pode faturar em 1 único dia o que hoje leva 30!</h1>
 
         <p class="hero-bold reveal"><strong>Mas não é marcando uma data no calendário. É colocando um processo por baixo dela</strong>, e é exatamente isso que você monta em 2 dias na Imersão Evento de Vendas.</p>
 
         <p class="hero-sub reveal">O método para colocar uma data de faturamento no seu calendário todo mês <em>(ou para fazer suas primeiras vendas, se você está começando agora)</em> usando os contatos que já estão no seu WhatsApp, sem depender de post viral e sem gastar mais em tráfego.</p>
+        <p class="hero-sub-mobile reveal">Aprenda o método para colocar uma data de faturamento no seu calendário todo mês <em>(ou para fazer suas primeiras vendas, se você está começando agora)</em>, sem depender de post viral e sem gastar mais em tráfego.</p>
 
-        <div class="btn-row reveal"><a href="#preco" class="btn btn-orange">QUERO MINHA VAGA</a></div>
+        <div class="hero-tags reveal">AO VIVO | ONLINE | VAGAS LIMITADAS</div>
 
-        <div class="trust-row reveal">
+        <div class="btn-row reveal hero-cta"><a href="#preco" class="btn btn-orange">QUERO MINHA VAGA</a></div>
+
+        <div class="trust-row reveal hero-trust">
           <span class="trust-item">🔒 Pagamento seguro</span>
           <span class="trust-item">✓ Acesso à comunidade imediato</span>
         </div>
@@ -759,7 +798,8 @@
       <span class="price-badge">Lote 0 · vagas limitadas</span>
       <div class="price-v2-head">IMERSÃO EVENTO DE VENDA — 04 e 05 de Setembro</div>
       <div class="price-v2-old">De R$ 497,00</div>
-      <div class="price-v2-new"><span>ou</span> R$ 47<span>,00 à vista</span></div>
+      <div class="price-v2-new">12x <span>de R$ 3,70</span></div>
+      <div class="price-v2-cash">ou R$ 37,00 à vista</div>
       <div class="price-v2-fire">🔥 Menos que uma pizza. Pra aprender a colocar data no seu faturamento.</div>
 
       <ul class="icon-list price-v2-includes">
@@ -789,7 +829,7 @@
     <p class="body reveal">Todo mundo sai no lucro. Isso, aliás, é um Evento de Vendas funcionando, e você vai ver ele por dentro.</p>
 
     <h2 class="h-title center reveal" style="margin-top:44px;">Risco zero, na moral</h2>
-    <p class="body center reveal">Participa da sexta-feira inteira. Se até o fim da primeira noite você achar que não é pra você, me manda uma mensagem e eu devolvo seus R$ 47. Sem perguntas, sem constrangimento, sem perder a amizade.</p>
+    <p class="body center reveal">Participa da sexta-feira inteira. Se até o fim da primeira noite você achar que não é pra você, me manda uma mensagem e eu devolvo seus R$ 37. Sem perguntas, sem constrangimento, sem perder a amizade.</p>
   </div>
 </section>
 <div class="wave wave-from-lightgray"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,-14 480,60 720,38 C960,16 1200,66 1440,30 L1440,60 L0,60 Z" fill="#143a24"/></svg></div>
