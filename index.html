@@ -396,6 +396,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
   .reveal.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* popup - captura de lead (nome + telefone) antes do checkout */
+  .popup-overlay{
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(11,32,22,0.82);
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+  }
+  .popup-overlay.is-open{opacity:1;visibility:visible;}
+  .popup-card{
+    position:relative;width:100%;max-width:560px;
+    background:var(--offwhite);border-radius:20px;
+    padding:30px 26px 22px;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,0.55);
+    transform:translateY(14px) scale(.98);
+    transition:transform .25s ease;
+    max-height:92vh;overflow-y:auto;
+  }
+  .popup-overlay.is-open .popup-card{transform:translateY(0) scale(1);}
+  .popup-close{
+    position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;
+    border:1px solid var(--border-light);background:var(--white);color:var(--ink);
+    font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    padding:0;
+  }
+  .popup-kicker{
+    font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    color:#1f8f57;margin-bottom:10px;display:block;line-height:1.4;
+  }
+  .popup-title{font-size:clamp(20px,4vw,24px);color:var(--ink);margin-bottom:6px;}
+  .popup-sub{font-size:16.5px;color:var(--muted);margin-bottom:20px;line-height:1.55;}
+  .popup-hint{font-size:12.5px;color:var(--muted);margin-top:-8px;line-height:1.4;}
+  .popup-form{display:flex;flex-direction:column;gap:16px;margin-top:6px;}
+  .popup-field{display:flex;flex-direction:column;gap:6px;text-align:left;}
+  .popup-field label{font-size:13px;font-weight:700;color:var(--ink);}
+  .popup-field input{
+    padding:13px 14px;border-radius:10px;border:1.5px solid var(--border-light);
+    font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);background:var(--white);
+    outline:none;transition:border-color .15s ease;width:100%;
+  }
+  .popup-field input:focus{border-color:var(--orange);}
+  .popup-field input::placeholder{color:#9aa79e;}
+  .popup-submit{width:100%;margin-top:2px;}
+  @media (max-width:480px){
+    .popup-card{padding:24px 18px 18px;border-radius:16px;}
+  }
 </style>
 </head>
 <body>
@@ -902,6 +950,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<!-- ============ POPUP - CAPTURA DE LEAD ANTES DO CHECKOUT ============ -->
+<div class="popup-overlay" id="popup-overlay" aria-hidden="true">
+  <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="popup-close" type="button" data-popup-close aria-label="Fechar">&times;</button>
+    <span class="popup-kicker">Imersão Evento de Venda — 04 e 05 de Setembro</span>
+    <h3 id="popup-title" class="popup-title">Garanta sua vaga</h3>
+    <p class="popup-sub">Preencha seus dados abaixo pra seguir direto pro pagamento da sua vaga.</p>
+    <form id="popup-form" class="popup-form" action="https://pagamento.institutoaudaz.com/form/a282757a-d751-4578-a563-f67dbb637708" method="post">
+      <div class="popup-field">
+        <label for="popup-name">Nome</label>
+        <input required autofocus placeholder="Seu nome completo" name="name" type="text" id="popup-name">
+      </div>
+      <div class="popup-field">
+        <label for="popup-email">E-mail</label>
+        <input required placeholder="seu@email.com" name="email" type="email" id="popup-email">
+      </div>
+      <div class="popup-field">
+        <label for="popup-phone">Telefone</label>
+        <input required placeholder="(11) 91234-5678" name="phone" type="tel" id="popup-phone">
+        <span class="popup-hint">Se você mora fora do Brasil, digite o código do país antes do número (ex: +351 912 345 678).</span>
+      </div>
+      <input type="hidden" name="phone_local_code" value="55">
+      <input type="hidden" name="utm_source">
+      <input type="hidden" name="utm_medium">
+      <input type="hidden" name="utm_campaign">
+      <input type="hidden" name="utm_content">
+      <input type="hidden" name="utm_term">
+      <button type="submit" class="btn btn-orange popup-submit">Garantir Minha Vaga →</button>
+    </form>
+  </div>
+</div>
+
 <script>
   document.querySelectorAll('[data-faq-toggle]').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -922,6 +1002,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         answer.style.maxHeight = answer.scrollHeight + 'px';
       }
     });
+  });
+
+  var popupOverlay = document.getElementById('popup-overlay');
+  function openPopup(){
+    popupOverlay.classList.add('is-open');
+    popupOverlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
+  function closePopup(){
+    popupOverlay.classList.remove('is-open');
+    popupOverlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  }
+  document.querySelectorAll('a[href="#preco"], a[href^="https://pagamento.institutoaudaz.com/pay/"]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      openPopup();
+    });
+  });
+  popupOverlay.addEventListener('click', function(e){
+    if(e.target === popupOverlay){ closePopup(); }
+  });
+  document.querySelectorAll('[data-popup-close]').forEach(function(btn){
+    btn.addEventListener('click', closePopup);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && popupOverlay.classList.contains('is-open')){ closePopup(); }
+  });
+
+  // captura utm_* da URL da página e repassa pro formulário do Guru,
+  // tanto nos campos ocultos (POST) quanto na querystring da action (URL) —
+  // o Guru reconhece UTM em ambos os formatos, dependendo do endpoint.
+  var popupForm = document.getElementById('popup-form');
+  var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  var pageParams = new URLSearchParams(window.location.search);
+  var popupFormBaseAction = popupForm.action;
+  utmKeys.forEach(function(key){
+    var value = pageParams.get(key);
+    if(value){
+      var hiddenInput = popupForm.querySelector('input[name="' + key + '"]');
+      if(hiddenInput){ hiddenInput.value = value; }
+    }
+  });
+  popupForm.addEventListener('submit', function(){
+    var utmQuery = new URLSearchParams();
+    utmKeys.forEach(function(key){
+      var value = pageParams.get(key);
+      if(value){ utmQuery.set(key, value); }
+    });
+    var utmQueryString = utmQuery.toString();
+    popupForm.action = utmQueryString ? (popupFormBaseAction + '?' + utmQueryString) : popupFormBaseAction;
   });
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
