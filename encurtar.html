@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN3V3R4R');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Encurtador de Links — Instituto Audaz</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<style>
+  :root{
+    --bg-dark-1: #0b2016;
+    --bg-dark-2: #143a24;
+    --white: #ffffff;
+    --offwhite: #f6f7f2;
+    --ink: #15221a;
+    --muted: #4d5f53;
+    --border-light: #e1e6da;
+    --orange: #f2691c;
+    --orange-deep: #d9500b;
+    --red-x: #e5493f;
+    --green-ok: #1f8f57;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;min-height:100vh;
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;
+    background:var(--bg-dark-2);
+    color:var(--white);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  h1,h2{font-family:'Poppins','Segoe UI',system-ui,sans-serif;font-weight:700;margin:0;}
+  .card{
+    width:100%;max-width:520px;background:var(--offwhite);border-radius:20px;
+    padding:32px 28px;box-shadow:0 40px 90px -30px rgba(0,0,0,0.55);
+  }
+  .kicker{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-ok);margin-bottom:10px;display:block;}
+  h1{font-size:24px;color:var(--ink);margin-bottom:6px;}
+  .sub{font-size:15px;color:var(--muted);margin-bottom:24px;line-height:1.5;}
+  label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .field{margin-bottom:16px;}
+  input{
+    width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--border-light);
+    font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);background:var(--white);
+    outline:none;transition:border-color .15s ease;
+  }
+  input:focus{border-color:var(--orange);}
+  button{
+    width:100%;padding:14px 20px;border-radius:12px;border:none;cursor:pointer;
+    font-family:inherit;font-weight:700;font-size:15.5px;
+    background:linear-gradient(180deg,var(--orange) 0%, var(--orange-deep) 100%);
+    color:#fff8f2;box-shadow:0 14px 30px -12px rgba(242,105,28,0.55);
+    transition:transform .15s ease;margin-top:4px;
+  }
+  button:hover{transform:translateY(-1px);}
+  button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+  .result{
+    margin-top:20px;padding:16px;border-radius:12px;
+    background:rgba(31,143,87,0.08);border:1px solid rgba(31,143,87,0.3);
+    display:none;
+  }
+  .result.show{display:block;}
+  .result.error{background:rgba(229,73,63,0.08);border-color:rgba(229,73,63,0.3);}
+  .result-label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;}
+  .result-row{display:flex;gap:8px;align-items:center;}
+  .result-link{
+    flex:1;font-size:15px;font-weight:700;color:var(--green-ok);word-break:break-all;
+  }
+  .result.error .result-link{color:var(--red-x);font-weight:600;}
+  .copy-btn{
+    width:auto;flex-shrink:0;padding:8px 14px;font-size:13px;
+    background:var(--ink);box-shadow:none;margin-top:0;
+  }
+  .copy-btn.copied{background:var(--green-ok);}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN3V3R4R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="card">
+  <span class="kicker">Instituto Audaz</span>
+  <h1>Encurtador de links</h1>
+  <p class="sub">Cole a URL completa (com UTM) e gere um link curto no seu próprio domínio.</p>
+
+  <form id="shorten-form">
+    <div class="field">
+      <label for="url">URL completa</label>
+      <input id="url" name="url" type="url" required placeholder="https://evento.institutoaudaz.com/?utm_source=...">
+    </div>
+    <div class="field">
+      <label for="password">Senha</label>
+      <input id="password" name="password" type="password" required placeholder="••••••••">
+    </div>
+    <button type="submit" id="submit-btn">Encurtar link</button>
+  </form>
+
+  <div class="result" id="result">
+    <div class="result-label" id="result-label">Seu link curto</div>
+    <div class="result-row">
+      <span class="result-link" id="result-link"></span>
+      <button type="button" class="copy-btn" id="copy-btn">Copiar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var form = document.getElementById('shorten-form');
+  var submitBtn = document.getElementById('submit-btn');
+  var result = document.getElementById('result');
+  var resultLabel = document.getElementById('result-label');
+  var resultLink = document.getElementById('result-link');
+  var copyBtn = document.getElementById('copy-btn');
+  var lastShortUrl = '';
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Encurtando...';
+    result.classList.remove('show', 'error');
+    copyBtn.style.display = 'inline-block';
+
+    var url = document.getElementById('url').value.trim();
+    var password = document.getElementById('password').value;
+
+    fetch('/api/shorten', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: url, password: password })
+    })
+      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+      .then(function(r){
+        if (r.ok) {
+          lastShortUrl = r.data.shortUrl;
+          resultLabel.textContent = 'Seu link curto';
+          resultLink.textContent = r.data.shortUrl;
+          result.classList.remove('error');
+          copyBtn.style.display = 'inline-block';
+          copyBtn.textContent = 'Copiar';
+          copyBtn.classList.remove('copied');
+        } else {
+          resultLabel.textContent = 'Erro';
+          resultLink.textContent = r.data.error || 'Algo deu errado.';
+          result.classList.add('error');
+          copyBtn.style.display = 'none';
+        }
+        result.classList.add('show');
+      })
+      .catch(function(){
+        resultLabel.textContent = 'Erro';
+        resultLink.textContent = 'Não foi possível conectar. Tenta de novo.';
+        result.classList.add('error', 'show');
+        copyBtn.style.display = 'none';
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Encurtar link';
+      });
+  });
+
+  copyBtn.addEventListener('click', function(){
+    if (!lastShortUrl) return;
+    navigator.clipboard.writeText(lastShortUrl).then(function(){
+      copyBtn.textContent = 'Copiado!';
+      copyBtn.classList.add('copied');
+      setTimeout(function(){
+        copyBtn.textContent = 'Copiar';
+        copyBtn.classList.remove('copied');
+      }, 1500);
+    });
+  });
+</script>
+
+</body>
+</html>
