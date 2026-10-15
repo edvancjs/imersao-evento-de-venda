@@ -118,6 +118,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .rail span.on{color:var(--tx);}
   .rail span.on::after{transform:scaleX(1);}
 
+  /* ---------- mobile: sem cenas fixas, tudo em lista natural ---------- */
+  @media (max-width:899px){
+    .story .stick{position:static;}
+    .story .frame img{aspect-ratio:4/3;transform:none;}
+    .pains{height:auto;overflow:visible;padding:clamp(70px,12vh,110px) 0;}
+    .pains .pin{height:auto;display:block;}
+    .pains-stage{height:auto;margin-top:34px;display:grid;gap:14px;}
+    .pain{position:static;opacity:1;max-width:none;font-size:clamp(23px,6.4vw,30px);line-height:1.15;padding:22px 20px;border-radius:20px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--orange);}
+    .pains .dots{display:none;}
+    .week{height:auto;overflow:visible;padding:clamp(70px,12vh,110px) 0;}
+    .week .pin{height:auto;display:block;}
+    .week .pin>.wrap{height:auto;display:block;}
+    .week .head{position:static;margin-bottom:30px;}
+    .week .panels{height:auto;margin-top:0;display:grid;gap:14px;}
+    .panel{position:static;opacity:1;inset:auto;padding:22px 20px;border-radius:20px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);gap:8px;}
+    .panel .d{font-size:clamp(30px,9vw,42px);}
+    .panel .t{font-size:clamp(18px,4.8vw,22px);max-width:none;font-weight:500;line-height:1.35;color:#e5e5ea;}
+    .rail{display:none;}
+  }
+
   /* ---------- note ---------- */
   .note{padding:clamp(70px,12vh,150px) 0;background:var(--bg);text-align:center;}
   .note p{font-size:clamp(28px,4.6vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1.1;max-width:22ch;margin:0 auto;}
@@ -450,10 +470,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     gsap.to('#portrait',{yPercent:-6,scale:1.06,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
     gsap.to('.hero .copy',{opacity:0,y:-40,ease:'none',scrollTrigger:{trigger:'#hero',start:'55% top',end:'bottom top',scrub:true}});
 
-    // dores: pin + sequência
+    var mobile=window.matchMedia('(max-width:899px)').matches;
+    // dores: pin + sequência (só no desktop; no celular vira lista)
     var pains=gsap.utils.toArray('.pain'), dots=gsap.utils.toArray('.pains .dots i');
-    var pt=gsap.timeline({scrollTrigger:{trigger:'#pains',start:'top top',end:'+='+(pains.length*85)+'%',pin:true,scrub:.7}});
-    pains.forEach(function(p,i){
+    if(mobile){ gsap.utils.toArray('.pain,.panel').forEach(function(el){gsap.from(el,{y:40,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});}); }
+    var pt=mobile?null:gsap.timeline({scrollTrigger:{trigger:'#pains',start:'top top',end:'+='+(pains.length*85)+'%',pin:true,scrub:.7}});
+    if(!mobile) pains.forEach(function(p,i){
       pt.fromTo(p,{opacity:0,y:60,filter:'blur(10px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.6,ease:'power2.out'});
       pt.call(function(){dots.forEach(function(d,k){d.classList.toggle('on',k<=i);});},null,'<');
       pt.to(p,{opacity:1,duration:.5});
@@ -471,8 +493,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     // semana: pin + painéis
     var panels=gsap.utils.toArray('.panel'), rail=gsap.utils.toArray('.rail span');
-    var wt=gsap.timeline({scrollTrigger:{trigger:'#week',start:'top top',end:'+='+(panels.length*90)+'%',pin:true,scrub:.7}});
-    panels.forEach(function(p,i){
+    var wt=mobile?null:gsap.timeline({scrollTrigger:{trigger:'#week',start:'top top',end:'+='+(panels.length*90)+'%',pin:true,scrub:.7}});
+    if(!mobile) panels.forEach(function(p,i){
       wt.fromTo(p,{opacity:0,y:70,scale:.96},{opacity:1,y:0,scale:1,duration:.6,ease:'power3.out'});
       wt.call(function(){rail.forEach(function(r,k){r.classList.toggle('on',k<=i);});},null,'<');
       wt.to(p,{opacity:1,duration:.5});
