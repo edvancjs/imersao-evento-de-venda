@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN3V3R4R');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laboratório de Vendas no WhatsApp — Comunidade gratuita</title>
+<meta name="description" content="Entre na comunidade e veja uma campanha de vendas no WhatsApp acontecer ao vivo, passo a passo.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050505; --bg-2:#0c0c0d; --paper:#f5f5f7; --ink:#1d1d1f;
+    --tx:#f5f5f7; --mute:#a1a1a6; --dim:#6e6e73; --line:rgba(255,255,255,.12);
+    --orange:#f2691c; --orange-hi:#ff8a3d; --green:#2f8f4e; --red:#e5493f;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:auto;}
+  body{background:var(--bg);color:var(--tx);font-family:'Geist','Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5;}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");}
+  img{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px);}
+  .eyebrow{font-family:'Geist Mono',monospace;font-weight:500;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-hi);}
+  .big{font-weight:700;letter-spacing:-.035em;line-height:1.02;}
+  .accent{color:var(--orange-hi);}
+  .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:22px 38px;border-radius:999px;font-weight:600;font-size:clamp(16px,1.5vw,19px);letter-spacing:-.005em;color:#fff;background:linear-gradient(180deg,#ff7a2d,#e85a0f);box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 20px 50px -14px rgba(242,105,28,.7);transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 28px 60px -14px rgba(242,105,28,.85);}
+  .btn:active{transform:scale(.98);}
+  .btn svg{width:18px;height:18px;transition:transform .35s var(--ease);}
+  .btn:hover svg{transform:translateX(4px);}
+  .micro{margin-top:16px;font-size:15px;color:var(--mute);}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,3vw,36px);transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent;}
+  .nav.on{background:rgba(5,5,5,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--line);}
+  .nav b{font-weight:600;font-size:15px;letter-spacing:-.01em;}
+  .nav .btn{padding:11px 22px;font-size:14.5px;opacity:0;pointer-events:none;transform:translateY(-6px);}
+  .nav.on .btn{opacity:1;pointer-events:auto;transform:none;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;padding:84px 0 0;}
+  .hero .wrap{width:100%;}
+  .hero::before{content:"";position:absolute;right:-12%;top:8%;width:68vw;height:68vw;max-width:900px;max-height:900px;border-radius:50%;background:radial-gradient(circle,rgba(242,105,28,.34),rgba(242,105,28,.06) 45%,transparent 68%);filter:blur(30px);}
+  .hero-grid{position:relative;display:grid;gap:36px;align-items:center;}
+  @media (min-width:900px){.hero-grid{display:block;position:static;}.hero .copy{max-width:min(60%,860px);padding-bottom:50px;}}
+  .tag{display:inline-block;margin:14px 0 18px;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,138,61,.5);background:rgba(242,105,28,.12);font-weight:600;font-size:15px;color:#ffd9bf;}
+  .hero h1{font-size:clamp(30px,3.6vw,54px);}
+  .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;}
+  .hero h1 .w>span{display:inline-block;will-change:transform;}
+  .hero .lead{margin-top:26px;font-size:clamp(19px,1.9vw,26px);font-weight:500;letter-spacing:-.02em;line-height:1.35;color:var(--tx);max-width:30ch;}
+  .hero .sub{margin-top:12px;font-size:clamp(16px,1.5vw,19px);color:var(--mute);max-width:42ch;}
+  .hero .cta{margin-top:26px;}
+  .portrait{position:relative;justify-self:center;align-self:end;width:min(100%,600px);}
+  .portrait img{mix-blend-mode:screen;width:100%;height:auto;-webkit-mask-image:radial-gradient(ellipse 72% 90% at 50% 42%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 72% 90% at 50% 42%,#000 58%,transparent 100%);will-change:transform;}
+  @media (min-width:900px){.portrait{position:absolute;right:max(2vw,calc((100vw - 1240px)/2));bottom:0;height:min(94dvh,980px);width:auto;aspect-ratio:4/5;}.portrait img{height:100%;width:100%;object-fit:cover;object-position:50% 0;}}
+  .scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--dim);font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;}
+  .scroll-hint i{width:1px;height:36px;background:linear-gradient(var(--orange),transparent);animation:drip 1.8s ease-in-out infinite;transform-origin:top;}
+  @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+  .pains .pin>.wrap{width:100%;}
+  .week .pin>.wrap{width:100%;position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;}
+  /* ---------- pains (pinned) ---------- */
+  .pains{position:relative;height:100dvh;background:var(--bg);overflow:hidden;}
+  .pains .pin{height:100dvh;display:flex;flex-direction:column;justify-content:center;}
+  .pains h2{font-size:clamp(20px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;color:var(--mute);max-width:26ch;}
+  .pains-stage{position:relative;height:clamp(260px,52vh,520px);margin-top:5vh;}
+  .pain{position:absolute;left:0;right:0;top:0;display:flex;align-items:flex-start;font-size:clamp(30px,5.2vw,74px);font-weight:700;letter-spacing:-.04em;line-height:1.06;max-width:20ch;opacity:0;}
+  .pains .dots{display:flex;gap:10px;margin-top:3vh;}
+  .pains .dots i{width:34px;height:3px;border-radius:3px;background:rgba(255,255,255,.15);overflow:hidden;position:relative;}
+  .pains .dots i::after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left;}
+  .pains .dots i.on::after{transform:scaleX(1);}
+
+  /* ---------- manifesto ---------- */
+  .manifesto{padding:clamp(90px,16vh,200px) 0;background:var(--bg);}
+  .manifesto p{font-size:clamp(30px,5.4vw,76px);font-weight:700;letter-spacing:-.04em;line-height:1.08;max-width:19ch;}
+  .manifesto .m{color:rgba(255,255,255,.16);}
+  .manifesto .m.hl{color:rgba(255,138,61,.22);}
+
+  /* ---------- sticky story ---------- */
+  .story{background:var(--bg-2);padding:clamp(80px,14vh,170px) 0;}
+  .story-grid{display:grid;gap:40px;}
+  @media (min-width:900px){.story-grid{grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start;}}
+  .story .stick{position:sticky;top:12vh;}
+  .story .frame{border-radius:28px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px var(--line);}
+  .story .frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;will-change:transform;transform:scale(1.12);}
+  .story h2{font-size:clamp(34px,5vw,68px);margin-bottom:6vh;}
+  .story .beat{font-size:clamp(20px,2.2vw,30px);line-height:1.4;letter-spacing:-.02em;color:var(--mute);margin-bottom:5vh;max-width:30ch;}
+  .story .beat strong{color:var(--tx);font-weight:600;}
+  .story .beat.key{color:var(--tx);font-weight:600;font-size:clamp(24px,2.8vw,38px);}
+
+  /* ---------- week (pinned) ---------- */
+  .week{position:relative;height:100dvh;overflow:hidden;background:var(--bg);}
+  .week .pin{height:100dvh;display:flex;flex-direction:column;justify-content:center;position:relative;}
+  .week .head{position:absolute;top:clamp(76px,11vh,120px);left:clamp(20px,4vw,48px);right:clamp(20px,4vw,48px);}
+  .week .head h2{font-size:clamp(22px,2.8vw,38px);font-weight:600;letter-spacing:-.025em;max-width:24ch;color:var(--mute);}
+  .week .panels{position:relative;height:54vh;margin-top:4vh;}
+  .panel{position:absolute;inset:0;display:grid;gap:12px;align-content:center;opacity:0;}
+  @media (min-width:900px){.panel{grid-template-columns:auto minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center;}}
+  .panel .d{white-space:nowrap;padding-right:.1em;font-size:clamp(46px,8.4vw,132px);font-weight:800;letter-spacing:-.06em;line-height:.9;text-transform:uppercase;background:linear-gradient(180deg,#fff 20%,#ff8a3d);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .panel .t{font-size:clamp(21px,2.6vw,36px);font-weight:600;letter-spacing:-.03em;line-height:1.22;max-width:24ch;}
+  .rail{position:absolute;left:clamp(20px,4vw,48px);right:clamp(20px,4vw,48px);bottom:clamp(26px,7vh,80px);display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .rail span{font-family:'Geist Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding-top:12px;position:relative;transition:color .3s;}
+  .rail span::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px;background:rgba(255,255,255,.12);}
+  .rail span::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);}
+  .rail span.on{color:var(--tx);}
+  .rail span.on::after{transform:scaleX(1);}
+
+  /* ---------- note ---------- */
+  .note{padding:clamp(70px,12vh,150px) 0;background:var(--bg);text-align:center;}
+  .note p{font-size:clamp(28px,4.6vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1.1;max-width:22ch;margin:0 auto;}
+
+  /* ---------- aula ---------- */
+  .aula{position:relative;padding:clamp(90px,15vh,190px) 0;background:var(--bg);overflow:hidden;}
+  .aula::before{content:"";position:absolute;left:50%;top:50%;width:90vw;height:60vw;max-width:1200px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(242,105,28,.2),transparent);filter:blur(30px);}
+  .aula .wrap{position:relative;}
+  .aula h2{font-size:clamp(34px,5.6vw,78px);max-width:16ch;}
+  .aula p{margin-top:32px;font-size:clamp(19px,2vw,26px);color:var(--mute);letter-spacing:-.015em;max-width:38ch;line-height:1.45;}
+  .steps{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px;}
+  .steps span{padding:14px 22px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-weight:500;font-size:clamp(15px,1.5vw,19px);backdrop-filter:blur(10px);}
+  .steps span b{font-family:'Geist Mono',monospace;color:var(--orange-hi);margin-right:10px;font-weight:500;}
+
+  /* ---------- paper ---------- */
+  .paper{background:var(--paper);color:var(--ink);padding:clamp(80px,13vh,160px) 0;}
+  .paper h3{font-size:clamp(28px,3.6vw,48px);font-weight:700;letter-spacing:-.035em;margin-bottom:34px;}
+  .cols{display:grid;gap:56px;}
+  @media (min-width:900px){.cols{grid-template-columns:1fr 1fr;gap:90px;}}
+  .paper li{list-style:none;display:grid;grid-template-columns:34px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(0,0,0,.12);font-size:clamp(18px,1.7vw,22px);line-height:1.45;letter-spacing:-.01em;}
+  .paper li:last-child{border-bottom:1px solid rgba(0,0,0,.12);}
+  .paper svg{width:28px;height:28px;margin-top:2px;}
+  .paper .no h3{color:#6e6e73;}
+
+  /* ---------- host ---------- */
+  .host{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden;background:#000;}
+  .host .bg{position:absolute;inset:-8% 0;}
+  .host .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.9) brightness(.7);}
+  .host::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.96) 6%,rgba(5,5,5,.55) 45%,rgba(5,5,5,.15) 80%);}
+  .host .wrap{position:relative;z-index:2;padding-top:30vh;padding-bottom:clamp(50px,10vh,120px);}
+  .host h2{font-size:clamp(34px,5.4vw,76px);margin-bottom:28px;}
+  .host p{font-size:clamp(19px,2vw,27px);color:#d2d2d7;letter-spacing:-.015em;max-width:34ch;line-height:1.45;}
+  .host p+p{margin-top:18px;}
+
+  /* ---------- cases ---------- */
+  .cases{background:var(--bg);padding:clamp(80px,13vh,160px) 0 clamp(60px,10vh,120px);}
+  .cases h2{font-size:clamp(34px,5vw,68px);margin-bottom:52px;}
+  .case-grid{display:grid;gap:18px;}
+  @media (min-width:900px){.case-grid{grid-template-columns:repeat(3,1fr);}}
+  .case{border-radius:26px;overflow:hidden;background:var(--bg-2);box-shadow:0 0 0 1px var(--line);transition:transform .5s var(--ease),box-shadow .5s;}
+  .case:hover{transform:translateY(-6px);box-shadow:0 0 0 1px rgba(255,138,61,.5),0 30px 70px -30px rgba(242,105,28,.45);}
+  .case img{width:100%;aspect-ratio:16/10;object-fit:cover;}
+  .case div{padding:26px 26px 30px;}
+  .case h3{font-size:clamp(21px,2vw,26px);letter-spacing:-.025em;margin-bottom:10px;}
+  .case p{font-size:clamp(16px,1.4vw,18px);color:var(--mute);line-height:1.5;}
+  .proof{margin-top:48px;font-size:clamp(22px,2.6vw,36px);font-weight:600;letter-spacing:-.03em;line-height:1.25;max-width:26ch;}
+
+  /* ---------- faq ---------- */
+  .faq{background:var(--bg);padding:clamp(40px,8vh,100px) 0 clamp(80px,13vh,160px);}
+  .faq h2{font-size:clamp(34px,5vw,68px);margin-bottom:44px;}
+  .q{border-top:1px solid var(--line);}
+  .q:last-child{border-bottom:1px solid var(--line);}
+  .q button{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 0;font-size:clamp(20px,2.2vw,29px);font-weight:600;letter-spacing:-.025em;}
+  .q button i{position:relative;flex:0 0 30px;height:30px;border-radius:50%;border:1px solid var(--line);transition:transform .45s var(--ease),background .3s;}
+  .q button i::before,.q button i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--tx);transform:translate(-50%,-50%);}
+  .q button i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .45s var(--ease);}
+  .q.open button i{transform:rotate(180deg);background:var(--orange);border-color:var(--orange);}
+  .q.open button i::after{transform:translate(-50%,-50%) rotate(0);}
+  .q .a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease);}
+  .q .a p{padding:0 56px 30px 0;font-size:clamp(18px,1.7vw,22px);color:var(--mute);line-height:1.55;max-width:50ch;}
+
+  /* ---------- final ---------- */
+  .final{position:relative;min-height:100dvh;display:flex;align-items:center;text-align:center;background:var(--bg);overflow:hidden;}
+  .final::before{content:"";position:absolute;left:50%;top:55%;width:110vw;height:70vw;max-width:1500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(242,105,28,.42),rgba(242,105,28,.08) 60%,transparent);filter:blur(24px);}
+  .final .wrap{position:relative;}
+  .final h2{font-size:clamp(34px,6.2vw,92px);max-width:18ch;margin:0 auto 44px;}
+  .foot{background:#000;padding:36px 0;text-align:center;color:var(--dim);font-size:14px;}
+  .foot img{height:30px;width:auto;margin:0 auto 12px;opacity:.9;}
+
+  /* ---------- popup (formulário) ---------- */
+  .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;overflow-y:auto;}
+  .modal.open{opacity:1;visibility:visible;}
+  .sheet{position:relative;width:100%;max-width:500px;margin:auto;border-radius:28px;background:#111214;padding:clamp(26px,4vw,38px);box-shadow:0 0 0 1px var(--line),0 60px 120px -30px #000;transform:translateY(24px) scale(.97);transition:transform .5s var(--ease);}
+  .modal.open .sheet{transform:none;}
+  .sheet .x{position:absolute;right:14px;top:10px;font-size:30px;line-height:1;color:var(--mute);padding:6px 10px;}
+  .sheet .who{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .sheet .av{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:#000 url(img/lab/hero-a.jpg) 50% 17%/270% auto no-repeat;box-shadow:0 0 0 2px var(--orange);}
+  .sheet .who b{display:block;font-size:15px;font-weight:600;}
+  .sheet .who span{font-size:13px;color:var(--mute);}
+  .sheet h3{font-size:clamp(25px,3.4vw,32px);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:24px;}
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+  .field>label,.field>.lbl{font-size:14.5px;font-weight:600;color:#e5e5ea;}
+  .field input[type=text],.field input[type=tel]{font:inherit;font-size:18px;padding:17px 18px;border-radius:14px;border:1.5px solid rgba(255,255,255,.16);background:#0a0a0b;color:var(--tx);outline:none;transition:border-color .25s,box-shadow .25s;}
+  .field input:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,105,28,.18);}
+  .field input::placeholder{color:#6e6e73;}
+  .field.bad input{border-color:var(--red);}
+  .field .em{display:none;font-size:13.5px;color:#ff8a80;}
+  .field.bad .em{display:block;}
+  .opts{display:grid;gap:8px;}
+  .opts label{position:relative;display:block;cursor:pointer;}
+  .opts input{position:absolute;opacity:0;inset:0;}
+  .opts span{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;border:1.5px solid rgba(255,255,255,.16);background:#0a0a0b;font-size:17px;font-weight:500;transition:border-color .2s,background .2s;}
+  .opts span::before{content:"";flex:0 0 20px;height:20px;border-radius:50%;border:2px solid #6e6e73;transition:all .2s;}
+  .opts input:checked+span{border-color:var(--orange);background:rgba(242,105,28,.12);}
+  .opts input:checked+span::before{border-color:var(--orange);background:radial-gradient(circle,var(--orange) 45%,transparent 50%);}
+  .opts input:focus-visible+span{box-shadow:0 0 0 4px rgba(242,105,28,.25);}
+  .field.bad .opts span{border-color:rgba(229,73,63,.6);}
+  .sheet .btn{width:100%;margin-top:6px;}
+  .sheet .btn[disabled]{opacity:.6;pointer-events:none;}
+  .legal{margin-top:16px;font-size:12.5px;line-height:1.5;color:var(--dim);}
+  .msg-pre{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(229,73,63,.12);color:#ff9d94;font-size:13.5px;line-height:1.45;}
+  .msg-pre.on{display:block;}
+
+  @media (max-width:899px){.portrait{order:-1;width:min(88%,420px);margin-bottom:-6vh;}.hero{padding-top:84px;}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN3V3R4R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="nav" id="nav">
+  <b>Laboratório de Vendas no WhatsApp</b>
+  <button class="btn" type="button" data-open>QUERO ENTRAR NA COMUNIDADE</button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div class="copy">
+      <span class="eyebrow">Comunidade gratuita · Vagas abertas esta semana</span><br>
+      <span class="tag">Laboratório de Vendas no WhatsApp</span>
+      <h1 class="big" id="h1">Durante 5 dias você acompanha, por dentro, como <span class="accent">se planeja, convida, engaja e vende</span> em uma comunidade de WhatsApp. E recebe a aula que ensina a montar a sua.</h1>
+      <p class="lead" data-fade>Entre na comunidade e veja uma campanha de vendas no WhatsApp acontecer ao vivo, passo a passo.</p>
+      <p class="sub" data-fade>Você não precisa de mais seguidores. Precisa de um lugar onde as pessoas confiem em você antes de comprar.</p>
+      <div class="cta" data-fade>
+        <button class="btn" type="button" data-open>QUERO ENTRAR NA COMUNIDADE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="micro">Gratuito. Você entra pelo WhatsApp e sai quando quiser.</p>
+      </div>
+    </div>
+    <div class="portrait"><img id="portrait" src="img/lab/hero-a.jpg" alt="Edvan Jacques" width="1600" height="2000"></div>
+  </div>
+  <div class="scroll-hint"><span>Role</span><i></i></div>
+</header>
+
+<!-- ============ DORES (pinned) ============ -->
+<section class="pains" id="pains">
+  <div class="pin"><div class="wrap">
+    <h2>Se você já passou por isso, essa semana foi feita para você:</h2>
+    <div class="pains-stage">
+      <p class="pain">Você sabe fazer algo que ajuda as pessoas, mas na hora de vender trava.</p>
+      <p class="pain">Já postou, já ofereceu, já esperou. E o dinheiro não veio.</p>
+      <p class="pain">Pensa que o que falta é tráfego, mais seguidores, mais tudo.</p>
+      <p class="pain">Já olhou para quem vende bem e achou que existe uma mágica que você não conhece.</p>
+      <p class="pain">Tem medo de investir e descobrir, de novo, que não era por aí.</p>
+    </div>
+    <div class="dots"><i></i><i></i><i></i><i></i><i></i></div>
+  </div></div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto">
+  <div class="wrap"><p id="manifesto">Boa notícia: não existe mágica. Existe um processo. E esse processo pode ser visto, copiado e adaptado ao que você faz.</p></div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story">
+  <div class="wrap story-grid">
+    <div class="stick"><div class="frame"><img src="img/lab/conduzindo-quadro.jpg" alt="Edvan Jacques desenhando no quadro o caminho do público até a venda" loading="lazy" id="storyImg"></div></div>
+    <div>
+      <h2 class="big">O que ninguém te conta sobre vender na internet</h2>
+      <p class="beat key" data-rise><strong>Ninguém compra de quem não conhece.</strong></p>
+      <p class="beat" data-rise>Quando você investe em anúncio ou cresce no Instagram, chega gente fria, que ainda não confia em você. E gente fria raramente compra na primeira vez.</p>
+      <p class="beat key" data-rise><strong>Quem vende de forma constante faz outra coisa:</strong></p>
+      <p class="beat" data-rise>Cria um lugar para onde essas pessoas vão, onde elas passam alguns dias aprendendo com você, vendo resultado, tirando dúvida.</p>
+      <p class="beat key" data-rise>Quando a oferta chega, a confiança já está construída.</p>
+      <p class="beat" data-rise>Esse lugar, para mim, é a comunidade de WhatsApp. É o funil que eu mais gosto de usar e é o que eu vou te mostrar funcionando.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SEMANA (pinned) ============ -->
+<section class="week" id="week">
+  <div class="pin"><div class="wrap">
+    <div class="head"><h2>Uma semana, cinco passos, tudo aberto para você assistir</h2></div>
+    <div class="panels">
+      <div class="panel"><div class="d">Segunda</div><p class="t">eu mostro como a semana vai funcionar e por que uma comunidade vende melhor do que um anúncio solto.</p></div>
+      <div class="panel"><div class="d">Terça</div><p class="t">libero a primeira parte do conteúdo, a que muda a forma de enxergar a venda.</p></div>
+      <div class="panel"><div class="d">Quarta</div><p class="t">revelo a oferta que vou apresentar nesta semana, para você ver como uma oferta é construída.</p></div>
+      <div class="panel"><div class="d">Quinta</div><p class="t">janela de oferta aberta, ao vivo. Você vê como se conduz uma venda sem pressão e sem perseguir ninguém.</p></div>
+      <div class="panel"><div class="d">Sexta</div><p class="t">último dia da janela. Você vê como se fecha uma campanha com honestidade.</p></div>
+    </div>
+    <div class="rail"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span></div>
+  </div></div>
+</section>
+
+<section class="note"><div class="wrap"><p class="big" data-rise>Você não precisa comprar nada para acompanhar. Se quiser, pode levar o método embora e aplicar sozinho.</p></div></section>
+
+<!-- ============ AULA ============ -->
+<section class="aula">
+  <div class="wrap">
+    <span class="eyebrow">Aula incluída</span>
+    <h2 class="big" data-rise style="margin-top:18px">Você recebe a aula "Como montar uma campanha de WhatsApp que vende"</h2>
+    <p data-rise>É a gravação da aula ao vivo em que eu mostro, na tela, o passo a passo completo: concepção, infraestrutura, convite, engajamento e venda. É o mesmo desenho que a gente usa com clientes de lançamento e que você vai ver rodando durante a semana.</p>
+    <div class="steps">
+      <span data-rise><b>01</b>concepção</span><span data-rise><b>02</b>infraestrutura</span><span data-rise><b>03</b>convite</span><span data-rise><b>04</b>engajamento</span><span data-rise><b>05</b>venda</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUEM ============ -->
+<section class="paper">
+  <div class="wrap cols">
+    <div>
+      <h3 data-rise>É para você se:</h3>
+      <ul>
+        <li data-rise><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="#2f8f4e"/><path d="M8 14.5l4 4 8-9" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Você tem um conhecimento, um serviço ou uma experiência que ajuda alguém, e quer transformar isso em renda.</span></li>
+        <li data-rise><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="#2f8f4e"/><path d="M8 14.5l4 4 8-9" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Você é terapeuta, coach, consultor, mentor, profissional da ajuda, professor ou criador em início de jornada.</span></li>
+        <li data-rise><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="#2f8f4e"/><path d="M8 14.5l4 4 8-9" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Você quer um processo simples, que funcione com uma audiência pequena.</span></li>
+      </ul>
+    </div>
+    <div class="no">
+      <h3 data-rise>Não é para você se:</h3>
+      <ul>
+        <li data-rise><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="#e5493f"/><path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg><span>Você procura renda sem fazer nada. Quem entra aqui vai colocar a mão na massa.</span></li>
+        <li data-rise><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="#e5493f"/><path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg><span>Você quer promessa de faturamento garantido. Eu entrego método, demonstração e ferramenta; o resultado depende da sua aplicação.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUEM VAI CONDUZIR ============ -->
+<section class="host">
+  <div class="bg"><img src="img/lab/palco.jpg" alt="Edvan Jacques no palco conduzindo uma conversa ao vivo com o público" loading="lazy" id="hostImg"></div>
+  <div class="wrap">
+    <h2 class="big" data-rise>Quem vai conduzir essa semana</h2>
+    <p data-rise>Eu sou o Edvan Jacques.</p>
+    <p data-rise>Cresci numa família simples e aprendi cedo que o que muda uma vida é conseguir transformar o que você sabe em algo que as pessoas valorizam. Hoje eu ajudo profissionais a vender pelo WhatsApp com processo e com tecnologia, e construí o Never Lose Sales para que nenhuma conversa de venda se perca.</p>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section class="cases">
+  <div class="wrap">
+    <h2 class="big" data-rise>Quem já usa esse método</h2>
+    <div class="case-grid">
+      <article class="case" data-rise><img src="img/case-arandu.jpg" alt="Arandu Academy" loading="lazy"><div><h3>Arandu Academy</h3><p>Uma empresa focada em espiritualidade, usa esse método de venda no WhatsApp para vender infoprodutos e lotar eventos.</p></div></article>
+      <article class="case" data-rise><img src="img/case-ipe.jpg" alt="Instituto Ipê Amarelo" loading="lazy"><div><h3>Instituto Ipê Amarelo</h3><p>Uma empresa de infoproduto para mulheres, usa esse método para lotar eventos presenciais e realizar pré-vendas de cursos.</p></div></article>
+      <article class="case" data-rise><img src="img/case-soumais.jpg" alt="Academia Sou Mais Cristo" loading="lazy"><div><h3>Academia Sou Mais Cristo</h3><p>Uma rede de academias em Curitiba e região metropolitana usa esse método para vender matrículas nas suas unidades.</p></div></article>
+    </div>
+    <p class="proof" data-rise>Isso é a prova que funciona em qualquer nicho, funciona para negócios digitais, funciona para negócios físicos.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="wrap">
+    <h2 class="big" data-rise>Perguntas frequentes</h2>
+    <div class="q"><button type="button">Preciso pagar para entrar?<i></i></button><div class="a"><p>Não. A comunidade é gratuita.</p></div></div>
+    <div class="q"><button type="button">Preciso ter muitos seguidores?<i></i></button><div class="a"><p>Não. A campanha funciona com audiência pequena. O objetivo é justamente reunir as pessoas certas num lugar só.</p></div></div>
+    <div class="q"><button type="button">Vou ser adicionado em um monte de grupos?<i></i></button><div class="a"><p>Não. Você entra por um link, em um único lugar. As conversas ficam num canal de avisos e você sai quando quiser.</p></div></div>
+    <div class="q"><button type="button">Vai ter uma oferta?<i></i></button><div class="a"><p>Sim, e eu aviso com antecedência. Você acompanha como ela é montada e decide com calma. Quem não comprar continua com o conteúdo gratuito.</p></div></div>
+    <div class="q"><button type="button">Preciso entender de tecnologia?<i></i></button><div class="a"><p>Não. Eu mostro cada passo.</p></div></div>
+    <div class="q"><button type="button">Isso funciona para o meu nicho?<i></i></button><div class="a"><p>Funciona para qualquer especialista que ajude pessoas: terapia, saúde, educação, negócios, espiritualidade, finanças, carreira.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ FINAL ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="big" data-rise>A próxima campanha acontece esta semana. Você vai assistir da plateia ou vai montar a sua?</h2>
+    <div data-rise><button class="btn" type="button" data-open>ENTRAR NA COMUNIDADE AGORA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><p class="micro">Acesso gratuito. Sem cartão.</p></div>
+  </div>
+</section>
+<footer class="foot"><img src="img/footer-logo.png" alt="Instituto Audaz"><p>Instituto Audaz — Todos os direitos reservados</p></footer>
+
+<!-- ============ POPUP (formulário) ============ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <button class="x" type="button" id="close" aria-label="Fechar">&times;</button>
+    <div class="who"><span class="av" role="img" aria-label="Edvan Jacques"></span><div><b>Edvan Jacques</b><span>Laboratório de Vendas no WhatsApp</span></div></div>
+    <h3 id="mt">Receba o link da comunidade no seu WhatsApp</h3>
+    <form id="lead" novalidate>
+      <div class="field" data-f="nome"><label for="f-nome">Nome</label><input id="f-nome" name="NOME" type="text" autocomplete="given-name" placeholder="Seu nome"><span class="em">Digite seu nome.</span></div>
+      <div class="field" data-f="email"><label for="f-email">E-mail</label><input id="f-email" name="EMAIL" type="email" inputmode="email" autocomplete="email" placeholder="seu@email.com"><span class="em">Digite um e-mail válido.</span></div>
+      <div class="field" data-f="wpp"><label for="f-wpp">WhatsApp (com DDD)</label><input id="f-wpp" name="SMS" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 91234-5678"><span class="em">Digite o WhatsApp com DDD.</span></div>
+      <button class="btn" type="submit" id="send">QUERO RECEBER O LINK</button>
+      <p class="msg-pre" id="pre">Formulário ainda não conectado ao Brevo (falta o endereço de envio). Nada foi enviado.</p>
+      <p class="legal">Ao enviar, você autoriza o Instituto Audaz e o Never Lose Sales a falar com você pelo WhatsApp sobre esta campanha. Você pode sair a qualquer momento.</p>
+    </form>
+    <iframe name="lead-target" id="lead-target" title="" style="display:none"></iframe>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  // ============ CONFIG ============
+  var FORM_ACTION = 'https://6f963cdf.sibforms.com/serve/MUIFAOZRpN3GF7povE0lE1hvE8hfSB33IMd8rlE8QZqg8mRtJ40VUbbaCQF7-G9ZQi-muoNVRaIGfXeHfRl8Erc6Kienh0ilEeMBmTaFlA7LSjx2RWLbiCKEsZzcuGOtOf5O1y93wjGCsWsmoFrDYKpcv9wIEBPk0T619ZIMuf3PGV8YAE0e4LpOEhylLguFFb-80xQsMB-Au-8P';   // formulário do Brevo (lista LAB | Laboratório de Vendas | Out/26)
+  var THANKS_URL  = 'laboratorio-obrigado.html';
+  var FORM_FIELDS = {nome:'NOME', email:'EMAIL', wpp:'SMS'};   // nomes dos campos no Brevo (sem 'momento atual' por enquanto)
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nav = document.getElementById('nav');
+  function navState(){ nav.classList.toggle('on', window.scrollY > window.innerHeight*0.6); }
+  window.addEventListener('scroll', navState, {passive:true}); navState();
+
+  // ---- FAQ
+  document.querySelectorAll('.q button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var q=b.parentNode, a=q.querySelector('.a'), open=q.classList.contains('open');
+      document.querySelectorAll('.q').forEach(function(o){o.classList.remove('open');o.querySelector('.a').style.maxHeight=null;});
+      if(!open){q.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+      if(window.ScrollTrigger) setTimeout(function(){ScrollTrigger.refresh();},600);
+    });
+  });
+
+  function split(el){ // palavras em máscara (hero)
+    var out=[]; (function walk(n,cls){
+      n.childNodes.forEach(function(c){
+        if(c.nodeType===3){ c.textContent.split(/(\s+)/).forEach(function(t){ if(!t) return; if(/^\s+$/.test(t)){ out.push(document.createTextNode(' ')); } else { var w=document.createElement('span'); w.className='w'; var s=document.createElement('span'); s.textContent=t; if(cls) s.className=cls; w.appendChild(s); out.push(w);} }); }
+        else if(c.nodeType===1){ walk(c, c.className||''); }
+      });
+    })(el,''); el.innerHTML=''; out.forEach(function(n){el.appendChild(n);});
+    return el.querySelectorAll('.w>span');
+  }
+
+  if(!reduce && window.gsap){
+    gsap.registerPlugin(ScrollTrigger);
+
+    // hero: entrada
+    var words = split(document.getElementById('h1'));
+    var tl = gsap.timeline({defaults:{ease:'power4.out'}});
+    tl.from('.hero .eyebrow,.hero .tag',{y:20,opacity:0,duration:.8,stagger:.1})
+      .from(words,{yPercent:110,duration:1.1,stagger:.035},'-=.5')
+      .from('[data-fade]',{y:26,opacity:0,duration:.9,stagger:.12},'-=.7')
+      .from('#portrait',{y:60,opacity:0,scale:.96,duration:1.6},'-=1.6');
+    gsap.to('#portrait',{yPercent:-6,scale:1.06,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.to('.hero .copy',{opacity:0,y:-40,ease:'none',scrollTrigger:{trigger:'#hero',start:'55% top',end:'bottom top',scrub:true}});
+
+    // dores: pin + sequência
+    var pains=gsap.utils.toArray('.pain'), dots=gsap.utils.toArray('.pains .dots i');
+    var pt=gsap.timeline({scrollTrigger:{trigger:'#pains',start:'top top',end:'+='+(pains.length*85)+'%',pin:true,scrub:.7}});
+    pains.forEach(function(p,i){
+      pt.fromTo(p,{opacity:0,y:60,filter:'blur(10px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.6,ease:'power2.out'});
+      pt.call(function(){dots.forEach(function(d,k){d.classList.toggle('on',k<=i);});},null,'<');
+      pt.to(p,{opacity:1,duration:.5});
+      if(i<pains.length-1) pt.to(p,{opacity:0,y:-60,filter:'blur(10px)',duration:.6,ease:'power2.in'});
+    });
+
+    // manifesto: palavra por palavra
+    var mf=document.getElementById('manifesto'), txt=mf.textContent.trim().split(/\s+/);
+    mf.innerHTML=txt.map(function(w,i){return '<span class="m'+((i>=6&&i<=9)?' hl':'')+'">'+w+'</span>';}).join(' ');
+    gsap.to('#manifesto .m:not(.hl)',{color:'#f5f5f7',stagger:.5,ease:'none',scrollTrigger:{trigger:'#manifesto',start:'top 78%',end:'bottom 45%',scrub:true}});
+    gsap.to('#manifesto .m.hl',{color:'#ff8a3d',stagger:.5,ease:'none',scrollTrigger:{trigger:'#manifesto',start:'top 78%',end:'bottom 45%',scrub:true}});
+
+    // story: parallax interno
+    gsap.to('#storyImg',{yPercent:-8,scale:1.02,ease:'none',scrollTrigger:{trigger:'.story',start:'top bottom',end:'bottom top',scrub:true}});
+
+    // semana: pin + painéis
+    var panels=gsap.utils.toArray('.panel'), rail=gsap.utils.toArray('.rail span');
+    var wt=gsap.timeline({scrollTrigger:{trigger:'#week',start:'top top',end:'+='+(panels.length*90)+'%',pin:true,scrub:.7}});
+    panels.forEach(function(p,i){
+      wt.fromTo(p,{opacity:0,y:70,scale:.96},{opacity:1,y:0,scale:1,duration:.6,ease:'power3.out'});
+      wt.call(function(){rail.forEach(function(r,k){r.classList.toggle('on',k<=i);});},null,'<');
+      wt.to(p,{opacity:1,duration:.5});
+      if(i<panels.length-1) wt.to(p,{opacity:0,y:-70,scale:1.04,duration:.5,ease:'power3.in'});
+    });
+
+    // host: parallax
+    gsap.to('#hostImg',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.host',start:'top bottom',end:'bottom top',scrub:true}});
+
+    // reveals genéricos
+    gsap.utils.toArray('[data-rise]').forEach(function(el){
+      gsap.from(el,{y:50,opacity:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
+    });
+  } else {
+    document.querySelectorAll('.pain').forEach(function(p){p.style.cssText='position:static;opacity:1;margin-bottom:24px';});
+    document.querySelector('.pains-stage').style.height='auto';
+    document.querySelectorAll('.panel').forEach(function(p){p.style.cssText='position:static;opacity:1;margin-bottom:30px';});
+    document.querySelectorAll('.pains,.week,.pains .pin,.week .pin').forEach(function(s){s.style.height='auto';});
+    document.querySelector('.week .panels').style.height='auto';
+    document.querySelector('.rail').style.display='none';
+    document.querySelector('.week .head').style.position='static';
+    document.querySelectorAll('.manifesto .m').forEach(function(m){m.style.color='#fff';});
+  }
+
+  // ---- botão magnético
+  if(!reduce && window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.hero .btn,.final .btn').forEach(function(b){
+      b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();var x=(e.clientX-r.left-r.width/2)*.18,y=(e.clientY-r.top-r.height/2)*.28;b.style.transform='translate('+x+'px,'+y+'px)';});
+      b.addEventListener('mouseleave',function(){b.style.transform='';});
+    });
+  }
+
+  // ============ POPUP (formulário) ============
+  var modal=document.getElementById('modal'), form=document.getElementById('lead'), pre=document.getElementById('pre'), sendBtn=document.getElementById('send');
+  var UTM=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'], qs=new URLSearchParams(location.search);
+  function openModal(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('f-nome').focus();},250);}
+  function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',openModal);});
+  document.getElementById('close').addEventListener('click',closeModal);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+  function bad(name,on){form.querySelector('[data-f="'+name+'"]').classList.toggle('bad',on);}
+  form.addEventListener('input',function(e){var f=e.target.closest('.field');if(f)f.classList.remove('bad');});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nome=form.NOME.value.trim(), email=form.EMAIL.value.trim(), wpp=form.SMS.value.trim();
+    var okMail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email); bad('nome',nome.length<2); bad('email',!okMail); bad('wpp',wpp.replace(/\D/g,'').length<10);
+    if(nome.length<2||!okMail||wpp.replace(/\D/g,'').length<10) return;
+    if(!FORM_ACTION){pre.classList.add('on');return;}
+    sendBtn.disabled=true; sendBtn.textContent='ENVIANDO…';
+    var digits=wpp.replace(/\D/g,''); var tel=(digits.indexOf('55')===0&&digits.length>=12)?digits.slice(2):digits;
+    var f=document.createElement('form'); f.method='post'; f.action=FORM_ACTION; f.target='lead-target'; f.style.display='none';
+    var add=function(n,v){var i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;f.appendChild(i);};
+    var fields=FORM_FIELDS; add(fields.nome,nome); add(fields.email,email); add(fields.wpp,tel); add('SMS__COUNTRY_CODE','+55'); add('locale','pt'); add('email_address_check','');
+    UTM.forEach(function(k){if(qs.get(k))add(k,qs.get(k));});
+    document.body.appendChild(f); f.submit();
+    try{sessionStorage.setItem('lab_nome',nome);}catch(err){}
+    setTimeout(function(){location.href=THANKS_URL+'?nome='+encodeURIComponent(nome.split(/\s+/)[0]);},1200);
+  });
+</script>
+</body>
+</html>
