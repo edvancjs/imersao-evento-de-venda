@@ -551,6 +551,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     var fields=FORM_FIELDS; add(fields.nome,nome); add(fields.email,email); add(fields.wpp,tel); add('SMS__COUNTRY_CODE','+55'); add('locale','pt'); add('email_address_check','');
     UTM.forEach(function(k){if(qs.get(k))add(k,qs.get(k));});
     document.body.appendChild(f); f.submit();
+    try{var u={nome:nome,email:email,telefone:wpp};UTM.forEach(function(k){if(qs.get(k))u[k]=qs.get(k);});fetch('/api/lab-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(u),keepalive:true}).catch(function(){});}catch(err){}
     try{sessionStorage.setItem('lab_nome',nome);}catch(err){}
     setTimeout(function(){location.href=THANKS_URL+'?nome='+encodeURIComponent(nome.split(/\s+/)[0]);},1200);
   });
